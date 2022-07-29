@@ -15,8 +15,9 @@ Graphics are written to an `images` directory, but I'm not tracking it here beca
 Here's a sample workflow you could use to repurpose this code for your own geography (assuming you've forked or otherwise copied this directory):
 
 1. Run the code in the `render_graphic.R` file, an example of which is  [R/portraits/bryce_canyon/render_graphic.R](R/portraits/bryce_canyon/render_graphic.R).
-    - If you're changing things up at all, start with a lower `z` value to get everything set how you want it, and when you're ready to render the final graphic, bump it up to the highest resolution you want.
+    - If you're changing things up at all, this will be an iterative process. Start with a lower `z` value to get everything set how you want it, and when you're ready to render the final graphic, bump it up to the highest resolution you want.
 1. Run the code in `markup.R` (e.g. [R/portraits/bryce_canyon/markup.R](R/portraits/bryce_canyon/markup.R)), adjusting the code as necessary for your given scenario.
+1. The code as I've written it will save two files, one at a higher resolution, and one at a lower resolution that should fall under the limits for sites like Instagram and Reddit.
 
 # Graphics
 
