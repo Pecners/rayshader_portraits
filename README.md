@@ -6,9 +6,17 @@ I've been making these graphics for a while (see my [gallery](https://spencersch
 
 ## Repo Structure
 
-Every graphic has its own director within the [R/portraits](R/portraits) directory, and helper functions can be found in the [R/utils](R/utils) directory. 
+Code to create each graphic has its own directory within the [R/portraits](R/portraits) directory, and helper functions can be found in the [R/utils](R/utils) directory. 
 
-The code as I've written writes graphics to an `images` directory, but I'm not tracking it here because the graphics tend to be pretty large files. Instead, I copy the smaller version of the graphics (created for posting to platforms like Instagram or Reddit where file size limits are enforced) to the [tracked_graphics](tracked_graphics) directory so there is something to showcase here.
+Graphics are written to an `images` directory, but I'm not tracking it here because the graphics tend to be pretty large files. Instead, I copy the smaller version of the graphics (created for posting to platforms like Instagram or Reddit where file size limits are enforced) to the [tracked_graphics](tracked_graphics) directory so there is something to showcase here.
+
+## Workflow
+
+Here's a sample workflow you could use to repurpose this code for your own geography (assuming you've forked or otherwise copied this directory):
+
+1. Run the code in the `render_graphic.R` file, an example of which is  [R/portraits/bryce_canyon/render_graphic.R](R/portraits/bryce_canyon/render_graphic.R).
+    - If you're changing things up at all, start with a lower `z` value to get everything set how you want it, and when you're ready to render the final graphic, bump it up to the highest resolution you want.
+1. Run the code in `markup.R` (e.g. [R/portraits/bryce_canyon/markup.R](R/portraits/bryce_canyon/markup.R)), adjusting the code as necessary for your given scenario.
 
 # Graphics
 
