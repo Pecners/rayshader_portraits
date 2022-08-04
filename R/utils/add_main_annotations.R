@@ -39,10 +39,15 @@ add_main_annotations <- function(
     # data_source is the attribution added to the caption
     data_source,
     # font size of caption
-    caption_size) {
+    caption_font,
+    caption_size,
+    crop) {
   
   # Read in file, get dimensions
   orig <- image_read(original)
+  if (!is.null(crop)) {
+    orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}"))
+  }
   w <- image_info(orig)$width
   h <- image_info(orig)$height
   
@@ -94,7 +99,7 @@ add_main_annotations <- function(
   # Caption
   img_ <- image_annotate(img_, glue("Graphic by Spencer Schien (     @MrPecners) | ", 
                                     "Data from {data_source}"), 
-                         font = secondary_font, location = "+0+50",
+                         font = caption_font, location = "+0+50",
                          color = alpha(text_color, .5), size = caption_size, gravity = "south")
   
   # Twitter
@@ -106,7 +111,7 @@ add_main_annotations <- function(
   # This writes a second image of smaller size, useful if you want to post
   # to Instagram or Reddit where size limits are restricted.
   
-  smimg <- image_scale(img_, "x3500")
+  smimg <- image_scale(img_, "4000")
   image_write(smimg, glue("images/{map}/{map}_titled_{pal}_insta_small.png"))
   file.copy(from = glue("images/{map}/{map}_titled_{pal}_insta_small.png"),
             to = glue("tracked_graphics/{map}_titled_{pal}_insta_small.png"))

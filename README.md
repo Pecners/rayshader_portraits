@@ -24,6 +24,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Great Smoky Mountains](R/portraits/smoky_mountains)
+
+![Great Smoky Mountains](tracked_graphics/smoky_titled_gray_jolla_insta_small.png)
+
 ## [Bryce Canyon](R/portraits/bryce_canyon)
 
 ![Bryce Canyon](tracked_graphics/bryce_titled_glacier_arches2_insta_small.png)
