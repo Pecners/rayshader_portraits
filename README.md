@@ -24,6 +24,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Sequoia National Park](R/portraits/sequoia)
+
+![Sequoia National Park](tracked_graphics/sequoia_titled_green_gold_insta_small.png)
+
 ## [Great Smoky Mountains](R/portraits/smoky_mountains)
 
 ![Great Smoky Mountains](tracked_graphics/smoky_titled_gray_jolla_insta_small.png)
