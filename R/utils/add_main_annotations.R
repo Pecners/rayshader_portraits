@@ -41,12 +41,17 @@ add_main_annotations <- function(
     # font size of caption
     caption_font,
     caption_size,
+    # twitter icon might need dialing in
+    # scaling of twitter icon
+    twitter_icon_size = 75,
+    # positioning of twitter icon
+    twitter_icon_coords = c(-450, 65),
     crop) {
   
   # Read in file, get dimensions
   orig <- image_read(original)
   if (!is.null(crop)) {
-    orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}"))
+    orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}"), gravity = "center")
   }
   w <- image_info(orig)$width
   h <- image_info(orig)$height
@@ -94,7 +99,7 @@ add_main_annotations <- function(
   dev.off()
   
   tw <- image_read(tmp)
-  tw <- image_scale(tw, "x75")
+  tw <- image_scale(tw, glue("x{twitter_icon_size}"))
   
   # Caption
   img_ <- image_annotate(img_, glue("Graphic by Spencer Schien (     @MrPecners) | ", 
@@ -103,8 +108,18 @@ add_main_annotations <- function(
                          color = alpha(text_color, .5), size = caption_size, gravity = "south")
   
   # Twitter
+  
+  if (twitter_icon_coords[1] < 1) {
+    tic_x <- glue("{twitter_icon_coords[1]}")
+  } else {
+    tic_x <- glue("+{twitter_icon_coords[1]}")
+  }
+  
+  # Twitter icon coords y can only be positive
+  tic_y <- glue("+{twitter_icon_coords[2]}")
+  
   img_ <- image_composite(img_, tw, gravity = "south",
-                          offset = "-450+65")
+                          offset = glue("{tic_x}{tic_y}"))
   
   image_write(img_, glue("images/{map}/{map}_titled_{pal}_highres.png"))
   
@@ -114,7 +129,8 @@ add_main_annotations <- function(
   smimg <- image_scale(img_, "4000")
   image_write(smimg, glue("images/{map}/{map}_titled_{pal}_insta_small.png"))
   file.copy(from = glue("images/{map}/{map}_titled_{pal}_insta_small.png"),
-            to = glue("tracked_graphics/{map}_titled_{pal}_insta_small.png"))
+            to = glue("tracked_graphics/{map}_titled_{pal}_insta_small.png"), 
+            overwrite = TRUE)
 }
 
 
