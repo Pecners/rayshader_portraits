@@ -26,6 +26,8 @@ add_main_annotations(map = header$map, pal = header$pal,
                      original = header$outfile,
                      # below crop width to 4750, leave height alone
                      crop = c("4500", ""),
+                     # I pulled the SVG from here: https://commons.wikimedia.org/wiki/File:I-70.svg
+                     # and modified it for the version in I70.svg
                      svg_file = "R/portraits/colorado_70/I70.svg",
                      svg_coords = c(.15, .09),
                      svg_size = 300,
