@@ -20,9 +20,14 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
     - When you're ready to render the final graphic, bump it up to the highest resolution you want.
 1. Run the code in `markup.R` (e.g. [R/portraits/bryce_canyon/markup.R](R/portraits/bryce_canyon/markup.R)), adjusting the code as necessary for your given scenario.
     - The code is structured to allow for aligning text, but currently I have only built it out to allow for center aligned. Aligning to left or right will involve handling those settings by setting `{magick}`'s `gravity` argument to 'west' or 'east', and then adjusting the coords accordingly. You could achieve this directly with `{magick}` as well if you want more direct control.
+    - I'm making improvements to the `utils` functions as I go, so earlier render and markup scripts might need updating to work with new functions. I am not maintaining backwards compatibility. 
 1. The code as I've written it will save two files, one at a higher resolution, and one at a lower resolution that should fall under the limits for sites like Instagram and Reddit.
 
 # Graphics
+
+## [Interstate 70](R/portraits/colorado_70)
+
+![Interstate 70](tracked_graphics/colorado_70_titled_alaska_flag_insta_small.png)
 
 ## [Sequoia National Park](R/portraits/sequoia)
 

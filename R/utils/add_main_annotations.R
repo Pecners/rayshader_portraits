@@ -46,7 +46,14 @@ add_main_annotations <- function(
     twitter_icon_size = 75,
     # positioning of twitter icon
     twitter_icon_coords = c(-450, 65),
-    crop) {
+    # use to add svg
+    svg_file = NULL,
+    svg_coords,
+    svg_size,
+    crop = NULL,
+    inset,
+    inset_coords,
+    inset_size) {
   
   # Read in file, get dimensions
   orig <- image_read(original)
@@ -115,12 +122,64 @@ add_main_annotations <- function(
     tic_x <- glue("+{twitter_icon_coords[1]}")
   }
   
+  
   # Twitter icon coords y can only be positive
   tic_y <- glue("+{twitter_icon_coords[2]}")
   
   img_ <- image_composite(img_, tw, gravity = "south",
                           offset = glue("{tic_x}{tic_y}"))
   
+  # Other SVG
+  
+  if (!is.null(svg_file)) {
+    
+    svg <- read_svg(svg_file)
+    
+    tmp <- tempfile()
+    png(tmp, bg = "transparent")
+    grid::grid.newpage()
+    grid::grid.draw(svg)
+    dev.off()
+    
+    svg_tmp <- image_read(tmp)
+    svg_tmp <- image_scale(svg_tmp, glue("x{svg_size}"))
+    
+    gravity <- "north"
+    c <- round(w / 2)
+    svg_w <- round(svg_coords[1] * w - c)
+    if (svg_w < 0) {
+      svg_x <- glue("{svg_w}")
+    } else {
+      svg_x <- glue("+{svg_w}")
+    }
+    
+    svg_h <- round(svg_coords[2] * h)
+    svg_y <- glue("+{svg_h}")
+    
+    img_ <- image_composite(img_, svg_tmp, gravity = gravity,
+                            offset = glue("{svg_x}{svg_y}"))
+  }
+  
+  if (!is.null(inset)) {
+    gravity <- "north"
+    c <- round(w / 2)
+    ins_w <- round(inset_coords[1] * w - c)
+    if (ins_w < 0) {
+      ins_x <- glue("{ins_w}")
+    } else {
+      ins_x <- glue("+{ins_w}")
+    }
+    
+    ins_h <- round(inset_coords[2] * h)
+    ins_y <- glue("+{ins_h}")
+    
+    inset <- image_read(inset)
+    inset <- image_scale(inset, glue("x{inset_size}"))
+    img_ <- image_composite(img_, inset, gravity = gravity,
+                            offset = glue("{ins_x}{ins_y}"))
+  }
+  
+  # Write main high res image
   image_write(img_, glue("images/{map}/{map}_titled_{pal}_highres.png"))
   
   # This writes a second image of smaller size, useful if you want to post
