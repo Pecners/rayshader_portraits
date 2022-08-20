@@ -68,31 +68,44 @@ add_main_annotations <- function(
   # setting gravity to "east" or "west" and adjusting the
   # `coords` transformation.
   
-  if (align == "center") {
-    gravity <- "north"
-    c <- round(w / 2)
-    wx <- round(base_coords[1] * w - c)
-    if (wx < 0) {
-      magick_x <- glue("{wx}")
-    } else {
-      magick_x <- glue("+{wx}")
-    }
-    
-    wy <- round(base_coords[2] * h)
-    magick_y <- glue("+{wy}")
-    magick_y2 <- glue("+{wy+offset}")
-  }
+  # if (align == "center") {
+  #   gravity <- "north"
+  #   c <- round(w / 2)
+  #   wx <- round(base_coords[1] * w - c)
+  #   if (wx < 0) {
+  #     magick_x <- glue("{wx}")
+  #   } else {
+  #     magick_x <- glue("+{wx}")
+  #   }
+  #   
+  #   wy <- round(base_coords[2] * h)
+  #   magick_y <- glue("+{wy}")
+  #   magick_y2 <- glue("+{wy+offset}")
+  # }
+  main_loc <- normalize_coords(img = orig, coords = base_coords, align = align)
   
   # Main Title
   img_ <- image_annotate(orig, text = main_text, weight = 700, 
                          font = main_font, 
-                         location = glue("{magick_x}{magick_y}"),
-                         color = text_color, size = main_size, gravity = gravity)
+                         location = main_loc$loc_coords,
+                         color = text_color, size = main_size, gravity = main_loc$gravity)
+  cat(glue("Primary text: {main_loc$loc_coords}"), "\n")
   
-  # Secondary title
-  img_ <- image_annotate(img_, text = secondary_text, font = secondary_font,
-                         color = text_color, size = secondary_size, gravity = gravity,
-                         location = glue("{magick_x}{magick_y2}"))
+  
+  if (!is.null(secondary_text) & nchar(secondary_text) > 0) {
+    
+    sec_loc <- normalize_coords(img = orig, coords = base_coords, align = align,
+                                offset = offset)
+    
+    # Secondary title
+    img_ <- image_annotate(img_, text = secondary_text, font = secondary_font,
+                           color = text_color, size = secondary_size, 
+                           gravity = sec_loc$gravity,
+                           location = sec_loc$loc_coords)
+    cat(glue("Secondary text: {sec_loc$loc_coords}"), "\n")
+  }
+  
+
   
   # Twitter logo for caption
   # Get logo SVG, draw it, and then save to png

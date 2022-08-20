@@ -25,6 +25,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Kings Canyon National Park](R/portraits/kings_canyon)
+
+![Kings Canyon National Park](tracked_graphics/kings_canyon_titled_glacier_arches2_insta_small.png)
+
 ## [Interstate 70](R/portraits/colorado_70)
 
 ![Interstate 70](tracked_graphics/colorado_70_titled_alaska_flag_insta_small.png)
