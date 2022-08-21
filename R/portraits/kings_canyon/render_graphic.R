@@ -31,7 +31,7 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 12
+z <- 13
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
 
@@ -81,7 +81,7 @@ mat %>%
   height_shade(texture = grDevices::colorRampPalette(rev(colors), bias = .75)(256)) %>%
   plot_3d(heightmap = mat, 
           # This is my preference, I don't love the `solid` in most cases
-          solid = FALSE, 
+          solid = FALSE,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
           z = 8,
@@ -155,6 +155,7 @@ saveRDS(list(
     # All it takes is accidentally interacting with a render that takes
     # hours in total to decide you NEVER want it interactive
     interactive = FALSE,
+    preview = FALSE,
     # HDR lighting used to light the scene
     environment_light = "assets/env/phalzer_forest_01_4k.hdr",
     # environment_light = "assets/env/small_rural_road_4k.hdr",
@@ -164,7 +165,7 @@ saveRDS(list(
     rotate_env = 160,
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
-    width = round(4000 * wr), height = round(4000 * hr),
+    width = round(6000 * wr), height = round(6000 * hr),
     # default ground material is diffuse white, here using
     # microfacet instead to create a brushed metal appearance
     ground_material = rayrender::microfacet(roughness = c(.1, .3),
