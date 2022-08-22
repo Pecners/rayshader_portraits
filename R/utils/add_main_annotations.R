@@ -51,6 +51,7 @@ add_main_annotations <- function(
     svg_coords,
     svg_size,
     crop = NULL,
+    crop_gravity = "center",
     inset,
     inset_coords,
     inset_size) {
@@ -58,7 +59,7 @@ add_main_annotations <- function(
   # Read in file, get dimensions
   orig <- image_read(original)
   if (!is.null(crop)) {
-    orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}"), gravity = "center")
+    orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}"), gravity = crop_gravity)
   }
   w <- image_info(orig)$width
   h <- image_info(orig)$height
