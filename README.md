@@ -25,6 +25,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [San Andreas Fault at Temblor Range](R/portraits/san_andreas)
+
+![San Andreas Fault at Temblor Range](tracked_graphics/san_andreas_titled_glacier_lajolla_insta_small.png)
+
 ## [Glacier National Park](R/portraits/glacier)
 
 ![Glacier National Park](tracked_graphics/glacier_titled_glacier_insta_small.png)

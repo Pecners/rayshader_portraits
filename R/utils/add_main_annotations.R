@@ -36,6 +36,12 @@ add_main_annotations <- function(
     secondary_text,
     secondary_size,
     secondary_font,
+    
+    tertiary_text,
+    tertiary_size,
+    tertiary_font,
+    tertiary_offset,
+    
     # data_source is the attribution added to the caption
     data_source,
     # font size of caption
@@ -92,18 +98,30 @@ add_main_annotations <- function(
                          color = text_color, size = main_size, gravity = main_loc$gravity)
   cat(glue("Primary text: {main_loc$loc_coords}"), "\n")
   
-  
+  # Secondary title
   if (!is.null(secondary_text) & nchar(secondary_text) > 0) {
     
     sec_loc <- normalize_coords(img = orig, coords = base_coords, align = align,
                                 offset = offset)
     
-    # Secondary title
     img_ <- image_annotate(img_, text = secondary_text, font = secondary_font,
                            color = text_color, size = secondary_size, 
                            gravity = sec_loc$gravity,
                            location = sec_loc$loc_coords)
     cat(glue("Secondary text: {sec_loc$loc_coords}"), "\n")
+  }
+  
+  # Tertiary title
+  if (!is.null(tertiary_text) & nchar(tertiary_text) > 0) {
+    
+    ter_loc <- normalize_coords(img = orig, coords = base_coords, align = align,
+                                offset = offset + tertiary_offset)
+    
+    img_ <- image_annotate(img_, text = tertiary_text, font = tertiary_font,
+                           color = text_color, size = tertiary_size, 
+                           gravity = ter_loc$gravity,
+                           location = ter_loc$loc_coords)
+    cat(glue("Tertiary text: {ter_loc$loc_coords}"), "\n")
   }
   
 

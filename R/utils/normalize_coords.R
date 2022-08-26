@@ -1,3 +1,11 @@
+# This function takes in normalized x, y coordinates on an image
+# (i.e. between 0 and 1 where c(0,0) is top left and c(1,1) is bottom right)
+# and converts them to relative pixel locations compatible with {magick}'s syntax.
+
+# Returns a list with two elements:
+# [1] gravity of the annotation
+# [2] locations string in proper format for {magick}
+
 normalize_coords <- function(img,
                              coords, 
                              align = "center",
