@@ -21,11 +21,9 @@ map <- "san_andreas"
 
 coords <- c(35.27470121939794, -119.82663953010696)
 
-data <- st_sfc(st_point(rev(coords)), crs = 4326) %>%
-  st_transform(crs = 2229) %>%
-  st_buffer(50000)
+# See R/utils/make_ellipse for this function. 
 
-data <- make_ellipse(c(0,0), .15, 360, -55) |> 
+data <- make_ellipse(coords, .15, 360, -55) |> 
   st_transform(crs = 2229)
 
 # Plot to review

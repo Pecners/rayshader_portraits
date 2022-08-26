@@ -3,8 +3,8 @@ make_ellipse <- function(center_coords, r, npc, tilt) {
   rad <- (tilt * pi) / 180
 
   tmp <- map_df(1:npc, function(i) {
-    y1 <- center_coords[2] + r * sin((i * 180) / pi) * .5
-    x1 <- center_coords[1] + r * cos((i * 180) / pi)
+    y1 <- r * sin((i * 180) / pi) * .5
+    x1 <- r * cos((i * 180) / pi)
     
     tibble(
       x = x1 * cos(rad) - y1 * sin(rad),
@@ -13,8 +13,8 @@ make_ellipse <- function(center_coords, r, npc, tilt) {
   }) 
   
   tmp |> 
-    mutate(x = coords[1] + x,
-           y = coords[2] + y) |> 
+    mutate(x = center_coords[1] + x,
+           y = center_coords[2] + y) |> 
     st_as_sf(coords = c("y", "x"), crs = 4326) |>
     summarise() |>
     st_cast(to = "POLYGON") |>
