@@ -27,7 +27,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Great Basin](R/portraits/great_basin)
 
-![Great Basin](tracked_graphics/great_basin_titled_olympic_insta_small.png)
+![Great Basin](tracked_graphics/great_basin_titled_olympic_steel_insta_small.png)
 
 ## [San Andreas Fault at Temblor Range](R/portraits/san_andreas)
 
