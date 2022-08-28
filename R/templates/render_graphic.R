@@ -16,6 +16,8 @@ library(scico)
 
 map <- "CONFIG_MAP"
 
+# NPS boundaries source: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True
+
 data <- st_read("data/nps_boundary/nps_boundary.shp") |>
   filter(str_detect(PARKNAME, str_to_title(str_replace(map, "_", " "))))
 
