@@ -37,7 +37,7 @@ add_main_annotations <- function(
     secondary_size,
     secondary_font,
     
-    tertiary_text,
+    tertiary_text = NULL,
     tertiary_size,
     tertiary_font,
     tertiary_offset,
@@ -112,20 +112,20 @@ add_main_annotations <- function(
   }
   
   # Tertiary title
-  if (!is.null(tertiary_text) & nchar(tertiary_text) > 0) {
-    
-    ter_loc <- normalize_coords(img = orig, coords = base_coords, align = align,
-                                offset = offset + tertiary_offset)
-    
-    img_ <- image_annotate(img_, text = tertiary_text, font = tertiary_font,
-                           color = text_color, size = tertiary_size, 
-                           gravity = ter_loc$gravity,
-                           location = ter_loc$loc_coords)
-    cat(glue("Tertiary text: {ter_loc$loc_coords}"), "\n")
+  if (!is.null(tertiary_text)) {
+    if (nchar(tertiary_text) > 0) {
+      
+      ter_loc <- normalize_coords(img = orig, coords = base_coords, align = align,
+                                  offset = offset + tertiary_offset)
+      
+      img_ <- image_annotate(img_, text = tertiary_text, font = tertiary_font,
+                             color = text_color, size = tertiary_size, 
+                             gravity = ter_loc$gravity,
+                             location = ter_loc$loc_coords)
+      cat(glue("Tertiary text: {ter_loc$loc_coords}"), "\n")
+    }
   }
-  
 
-  
   # Twitter logo for caption
   # Get logo SVG, draw it, and then save to png
   
