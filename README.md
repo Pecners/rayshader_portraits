@@ -25,6 +25,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Eye of the Sahara](R/portraits/eye_of_sahara)
+
+![Eye of the Sahara](tracked_graphics/eye_of_sahara_titled_acadia_insta_small.png)
+
 ## [Great Basin](R/portraits/great_basin)
 
 ![Great Basin](tracked_graphics/great_basin_titled_olympic_steel_insta_small.png)
