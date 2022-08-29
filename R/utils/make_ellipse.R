@@ -1,10 +1,15 @@
 
-make_ellipse <- function(center_coords, r, npc, tilt) {
+make_ellipse <- function(center_coords, 
+                         r, 
+                         height_factor = 1,
+                         width_factor = 1,
+                         npc, 
+                         tilt = 0) {
   rad <- (tilt * pi) / 180
 
   tmp <- map_df(1:npc, function(i) {
-    y1 <- r * sin((i * 180) / pi) * .5
-    x1 <- r * cos((i * 180) / pi)
+    y1 <- r * sin((i * 180) / pi) * height_factor
+    x1 <- r * cos((i * 180) / pi) * width_factor
     
     tibble(
       x = x1 * cos(rad) - y1 * sin(rad),

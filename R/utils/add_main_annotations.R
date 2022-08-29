@@ -47,6 +47,8 @@ add_main_annotations <- function(
     # font size of caption
     caption_font,
     caption_size,
+    caption_coords,
+    caption_align,
     # twitter icon might need dialing in
     # scaling of twitter icon
     twitter_icon_size = 75,
@@ -58,12 +60,17 @@ add_main_annotations <- function(
     svg_size,
     crop = NULL,
     crop_gravity = "center",
+    crop_start = NULL,
     inset,
     inset_coords,
     inset_size) {
   
   # Read in file, get dimensions
   orig <- image_read(original)
+  
+  if (!is.null(crop_start)) {
+    orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}+{crop_start[1]}+{crop_start[2]}"))
+  }
   if (!is.null(crop)) {
     orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}"), gravity = crop_gravity)
   }
@@ -141,10 +148,22 @@ add_main_annotations <- function(
   tw <- image_scale(tw, glue("x{twitter_icon_size}"))
   
   # Caption
-  img_ <- image_annotate(img_, glue("Graphic by Spencer Schien (     @MrPecners) | ", 
-                                    "Data from {data_source}"), 
-                         font = caption_font, location = "+0+50",
-                         color = alpha(text_color, .5), size = caption_size, gravity = "south")
+  
+  cap_text <- glue("Graphic by Spencer Schien (     @MrPecners) | ", 
+                   "Data from {data_source}")
+  
+  if (!is.null(caption_coords)) {
+    cap_loc <- normalize_coords(img = orig, coords = caption_coords, align = caption_align)
+    img_ <- image_annotate(img_, text = cap_text, font = main_font,
+                           color = alpha(text_color, .5), size = caption_size, 
+                           gravity = cap_loc$gravity,
+                           location = cap_loc$loc_coords)
+    cat(glue("Caption text: {cap_loc$loc_coords}, {cap_loc$gravity}"), "\n")
+  } else { 
+    img_ <- image_annotate(img_, cap_text, 
+                           font = caption_font, location = "+0+50",
+                           color = alpha(text_color, .5), size = caption_size, gravity = "south")
+  }
   
   # Twitter
   
