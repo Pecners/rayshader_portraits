@@ -25,6 +25,11 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Crater of Vélingara](R/portraits/velingara)
+
+![Crater of Vélingara](tracked_graphics/velingara_titled_blue_eyes_insta_small.png)
+
+
 ## [Eye of the Sahara](R/portraits/eye_of_sahara)
 
 ![Eye of the Sahara](tracked_graphics/eye_of_sahara_titled_acadia_insta_small.png)
