@@ -4,7 +4,7 @@ for (f in list.files("R/utils")) {
 }
 
 # Load `header` list with needed data
-header <- readRDS("R/portraits/glacier/header.rds")
+header <- readRDS("R/portraits/CONFIG_MAP/header.rds")
 
 # Take original graphic from `render_highquality` and
 # add annotations.
