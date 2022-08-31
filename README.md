@@ -25,6 +25,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Capitol Reef National Park](R/portraits/capitol_reef)
+
+![Capitol Reef National Park](tracked_graphics/capitol_reef_titled_okeeffe_insta_small.png)
+
 ## [Crater of Vélingara](R/portraits/velingara)
 
 ![Crater of Vélingara](tracked_graphics/velingara_titled_blue_eyes_insta_small.png)
