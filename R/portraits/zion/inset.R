@@ -1,3 +1,8 @@
+library(tidyverse)
+library(sf)
+library(glue)
+
+
 # inset map -- need to comment this code...
 header <- readRDS("R/portraits/zion/header.rds")
 

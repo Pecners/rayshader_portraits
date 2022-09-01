@@ -4,8 +4,7 @@ library(elevatr)
 library(rayshader)
 library(glue)
 library(colorspace)
-library(NatParksPalettes)
-library(scico)
+library(MetBrewer)
 
 ###################################
 # Set up polygon for clipping DEM #
@@ -50,7 +49,7 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 14
+z <- 13
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
 
@@ -86,6 +85,11 @@ hr <- h / max(c(w,h))
 # Build 3D Object #
 ###################
 
+# setting shadow to 500 feet below minimum value in DEM
+shadow_depth <- min(mat, na.rm = TRUE) - 500
+
+# setting resolution to about 5x for height
+res <- mean(round(terra::res(zelev))) / 5
 
 # Keep this line so as you're iterating you don't forget to close the
 # previous window
@@ -148,7 +152,8 @@ saveRDS(list(
   pal = pal,
   z = z,
   colors = colors,
-  outfile = outfile
+  outfile = outfile,
+  coords = coords
 ), glue("R/portraits/{map}/header.rds"))
 
 {
