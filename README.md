@@ -25,6 +25,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Zion National Park](R/portraits/zion)
+
+![Zion National Park](tracked_graphics/zion_titled_okeeffe_insta_small.png)
+
 ## [Arches National Park](R/portraits/arches)
 
 ![Arches National Park](tracked_graphics/arches_titled_okeeffe_insta_small.png)
