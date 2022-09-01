@@ -4,18 +4,19 @@ for (f in list.files("R/utils")) {
 }
 
 # Load `header` list with needed data
-header <- readRDS("R/portraits/CONFIG_MAP/header.rds")
+header <- readRDS("R/portraits/arches/header.rds")
 
 # Take original graphic from `render_highquality` and
 # add annotations.
 
+# Burning graphic
 add_main_annotations(map = header$map, pal = header$pal, 
                      text_color = header$colors[1], 
                      align = "center",
-                     base_coords = c(.725, .1),
-                     offset = 650,
-                     main_text = "Capitol Reef",
-                     main_size = 400,
+                     base_coords = c(.2, .3),
+                     offset = 550,
+                     main_text = "Arches",
+                     main_size = 350,
                      main_font = "Tapestry",
                      secondary_text = "National Park",
                      secondary_size = 200,
@@ -24,16 +25,16 @@ add_main_annotations(map = header$map, pal = header$pal,
                      caption_font = "Tapestry",
                      caption_coords = c(.5, .97),
                      caption_align = "center",
-                     twitter_icon_coords = c(-500, 100),
-                     twitter_icon_size = 60,
+                     twitter_icon_coords = c(-500, 70),
+                     twitter_icon_size = 65,
                      data_source = "USGS and AWS Terrain Tiles",
                      original = header$outfile,
-                     crop = NULL,
-                     #crop_gravity = "north",
+                     crop = c(5000,5250),
+                     crop_gravity = "southwest",
                      crop_start = NULL,
                      svg_file = NULL,
                      svg_coords = NULL,
                      svg_size = NULL,
                      inset = glue("images/{header$map}/{header$pal}_inset.png"),
-                     inset_coords = c(.725, .3),
-                     inset_size = 1000)
+                     inset_coords = c(.2, .5),
+                     inset_size = 750)

@@ -4,7 +4,7 @@ library(elevatr)
 library(rayshader)
 library(glue)
 library(colorspace)
-library(NatParksPalettes)
+library(MetBrewer)
 library(scico)
 
 ###################################
@@ -14,12 +14,12 @@ library(scico)
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
 
-map <- "CONFIG_MAP"
+map <- "arches"
 
 # NPS boundaries source: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True
 
 data <- st_read("data/nps_boundary/nps_boundary.shp") |>
-  filter(str_detect(PARKNAME, str_to_title(str_replace(map, "_", " "))))|> 
+  filter(str_detect(PARKNAME, str_to_title(str_replace(map, "_", " ")))) |> 
   st_transform(crs = 3566)
 
 d_cent <- st_centroid(data) |> 
@@ -50,7 +50,7 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 12
+z <- 14
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
 
@@ -92,6 +92,7 @@ shadow_depth <- min(mat, na.rm = TRUE) - 500
 # setting resolution to about 5x for height
 res <- mean(round(terra::res(zelev))) / 5
 
+
 # Keep this line so as you're iterating you don't forget to close the
 # previous window
 
@@ -101,7 +102,7 @@ try(rgl::rgl.close())
 
 mat %>%
   # This adds the coloring, we're passing in our `colors` object
-  height_shade(texture = grDevices::colorRampPalette(colors, bias = .5)(256)) %>%
+  height_shade(texture = grDevices::colorRampPalette(colors)(256)) %>%
   plot_3d(heightmap = mat, 
           # This is my preference, I don't love the `solid` in most cases
           solid = FALSE,
@@ -115,7 +116,8 @@ mat %>%
           # Set the window size relatively small with the dimensions of our data.
           # Don't make this too big because it will just take longer to build,
           # and we're going to resize with `render_highquality()` below.
-          windowsize = c(800,800), 
+          # windowsize = c(800*wr,800*hr), 
+          windowsize = c(800, 800),
           # This is the azimuth, like the angle of the sun.
           # 90 degrees is directly above, 0 degrees is a profile view.
           phi = 90, 
@@ -126,7 +128,7 @@ mat %>%
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 80, zoom = 1, theta = 0)
+render_camera(phi = 90, zoom = 1, theta = 0)
 
 ###############################
 # Create High Quality Graphic #
@@ -151,11 +153,13 @@ outfile <- str_to_lower(glue("images/{map}/{map}_{pal}_z{z}.png"))
 saveRDS(list(
   map = map,
   pal = pal,
+  coords = coords,
   z = z,
   colors = colors,
   outfile = outfile
 ), glue("R/portraits/{map}/header.rds"))
 
+# Wrap this in brackets so it runs as chunk
 {
   # Test write a PNG to ensure the file path is good.
   # You don't want `render_highquality()` to fail after it's 
@@ -193,7 +197,6 @@ saveRDS(list(
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"))
 }
-
 
 
 
