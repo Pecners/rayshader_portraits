@@ -114,7 +114,7 @@ mat %>%
           # Set the window size relatively small with the dimensions of our data.
           # Don't make this too big because it will just take longer to build,
           # and we're going to resize with `render_highquality()` below.
-          windowsize = c(800*wr,800*hr), 
+          windowsize = c(800,800), 
           # This is the azimuth, like the angle of the sun.
           # 90 degrees is directly above, 0 degrees is a profile view.
           phi = 90, 
