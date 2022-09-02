@@ -14,6 +14,10 @@ Graphics are written to an `images` directory, but I'm not tracking it here beca
 
 Here's a sample workflow you could use to repurpose this code for your own geography (assuming you've forked or otherwise copied this directory):
 
+1. Call `.new_portrait()` to start work on a portrait. This function takes one argument, which is the name of the map. 
+    - If it is based on a US National Park, the name will be used to filter the master list of park geometries for the one you specified in the function call. 
+    - This function will create a new directory within `R/portraits`, with the directory name determined by `map` argument in the the function call.
+    - `.new_portrait()` is loaded whenever you open the project via the `.Rprofile` file, but it remains hidden from the environment because its name begins with a leading period.
 1. Run the code in the `render_graphic.R` file, an example of which is  [R/portraits/bryce_canyon/render_graphic.R](R/portraits/bryce_canyon/render_graphic.R).
     - If you're changing things up at all, this will be an iterative process. 
     - Start with a lower `z` value so you're working with less data, and it's easier to iterate as you work to to get everything set how you want it.

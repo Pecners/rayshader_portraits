@@ -4,8 +4,7 @@ library(elevatr)
 library(rayshader)
 library(glue)
 library(colorspace)
-library(NatParksPalettes)
-library(scico)
+library(MetBrewer)
 
 ###################################
 # Set up polygon for clipping DEM #
@@ -14,7 +13,7 @@ library(scico)
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
 
-map <- "CONFIG_MAP"
+map <- "bryce"
 
 # NPS boundaries source: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True
 
@@ -50,7 +49,7 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 12
+z <- 14
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
 
