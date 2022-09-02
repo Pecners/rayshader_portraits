@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Bryce Canyon National Park](R/portraits/bryce)
+
+![Bryce Canyon National Park](tracked_graphics/bryce_titled_okeeffe_insta_small.png)
+
 ## [Zion National Park](R/portraits/zion)
 
 ![Zion National Park](tracked_graphics/zion_titled_okeeffe_insta_small.png)
