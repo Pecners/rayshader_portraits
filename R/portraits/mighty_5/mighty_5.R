@@ -41,6 +41,8 @@ row2 <- image_montage(imgs[3:5], geometry = "6000X6000+0+0", tile = "3x1")
 
 canvas <- image_append(c(pad, row1, pad, row2, pad), stack = TRUE)
 
+image_write(canvas, "images/mighty_5/inter.png")
+
 # Add individual portrait titles
 
 xs <- rep(.33/2 + c(0:2) * .33, 2)
