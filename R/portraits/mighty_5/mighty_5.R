@@ -107,5 +107,6 @@ ff <- add_main_annotations(map = "mighty_5", pal = "okeeffe",
                            svg_size = NULL,
                            inset = NULL,
                            inset_coords = NULL,
-                           inset_size = NULL)
+                           inset_size = NULL,
+                           small_size = 3000)
 
