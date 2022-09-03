@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Mighty Five National Parks of Utah](R/portraits/mighty_5)
+
+![Mighty Five National Parks of Utah](tracked_graphics/mighty_5_titled_okeeffe_insta_small.png)
+
 ## [Bryce Canyon National Park](R/portraits/bryce)
 
 ![Bryce Canyon National Park](tracked_graphics/bryce_titled_okeeffe_insta_small.png)

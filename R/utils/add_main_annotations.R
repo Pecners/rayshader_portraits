@@ -41,6 +41,7 @@ add_main_annotations <- function(
     tertiary_size,
     tertiary_font,
     tertiary_offset,
+    tertiary_weight = 400,
     
     # data_source is the attribution added to the caption
     data_source,
@@ -63,10 +64,16 @@ add_main_annotations <- function(
     crop_start = NULL,
     inset,
     inset_coords,
-    inset_size) {
+    inset_size,
+    small_size = 4000) {
   
   # Read in file, get dimensions
-  orig <- image_read(original)
+  if (is.character(original)) {
+    orig <- image_read(original)
+  } else {
+    orig <- original
+  }
+  
   
   if (!is.null(crop_start)) {
     orig <- image_crop(orig, glue("{crop[1]}x{crop[2]}+{crop_start[1]}+{crop_start[2]}"),
@@ -104,7 +111,7 @@ add_main_annotations <- function(
                          font = main_font, 
                          location = main_loc$loc_coords,
                          color = text_color, size = main_size, gravity = main_loc$gravity)
-  cat(glue("Primary text: {main_loc$loc_coords}"), "\n")
+  cat(glue("Primary text: {main_loc$loc_coords}, {main_loc$gravity}"), "\n")
   
   # Secondary title
   if (!is.null(secondary_text) & nchar(secondary_text) > 0) {
@@ -116,7 +123,7 @@ add_main_annotations <- function(
                            color = text_color, size = secondary_size, 
                            gravity = sec_loc$gravity,
                            location = sec_loc$loc_coords)
-    cat(glue("Secondary text: {sec_loc$loc_coords}"), "\n")
+    cat(glue("Secondary text: {sec_loc$loc_coords}, {sec_loc$gravity}"), "\n")
   }
   
   # Tertiary title
@@ -127,10 +134,11 @@ add_main_annotations <- function(
                                   offset = offset + tertiary_offset)
       
       img_ <- image_annotate(img_, text = tertiary_text, font = tertiary_font,
+                             weight = tertiary_weight,
                              color = text_color, size = tertiary_size, 
                              gravity = ter_loc$gravity,
                              location = ter_loc$loc_coords)
-      cat(glue("Tertiary text: {ter_loc$loc_coords}"), "\n")
+      cat(glue("Tertiary text: {ter_loc$loc_coords}, {ter_loc$gravity}"), "\n")
     }
   }
 
@@ -155,7 +163,7 @@ add_main_annotations <- function(
   
   if (!is.null(caption_coords)) {
     cap_loc <- normalize_coords(img = orig, coords = caption_coords, align = caption_align)
-    img_ <- image_annotate(img_, text = cap_text, font = main_font,
+    img_ <- image_annotate(img_, text = cap_text, font = caption_font,
                            color = alpha(text_color, .5), size = caption_size, 
                            gravity = cap_loc$gravity,
                            location = cap_loc$loc_coords)
@@ -232,13 +240,13 @@ add_main_annotations <- function(
   }
   
   # Write main high res image
-  image_write(img_, glue("images/{map}/{map}_titled_{pal}_highres.png"))
+  image_write(img_, glue("images/{map}/{map}_titled_{pal}_highres.png"), format = "png")
   
   # This writes a second image of smaller size, useful if you want to post
   # to Instagram or Reddit where size limits are restricted.
   
-  smimg <- image_scale(img_, "4000")
-  image_write(smimg, glue("images/{map}/{map}_titled_{pal}_insta_small.png"))
+  smimg <- image_scale(img_, small_size)
+  image_write(smimg, glue("images/{map}/{map}_titled_{pal}_insta_small.png"), format = "png")
   file.copy(from = glue("images/{map}/{map}_titled_{pal}_insta_small.png"),
             to = glue("tracked_graphics/{map}_titled_{pal}_insta_small.png"), 
             overwrite = TRUE)
