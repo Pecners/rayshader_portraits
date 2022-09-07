@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Badlands National Park](R/portraits/badlands)
+
+![Badlands National Park](tracked_graphics/badlands_titled_tangerine_blues_insta_small.png)
+
 ## [Mighty Five National Parks of Utah](R/portraits/mighty_5)
 
 ![Mighty Five National Parks of Utah](tracked_graphics/mighty_5_titled_okeeffe_insta_small.png)
