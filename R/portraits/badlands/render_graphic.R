@@ -4,7 +4,7 @@ library(elevatr)
 library(rayshader)
 library(glue)
 library(colorspace)
-library(MetBrewer)
+library(PrettyCols)
 
 ###################################
 # Set up polygon for clipping DEM #
@@ -66,7 +66,7 @@ mat <- raster_to_matrix(zelev)
 
 pal <- "tangerine_blues"
 
-c1 <- PrettyCols::prettycols("TangerineBlues", direction = -1, type = "continuous", n = 1000)
+c1 <- prettycols("TangerineBlues", direction = -1, type = "continuous", n = 1000)
 
 colors <- c(c1)
 swatchplot(colors)
