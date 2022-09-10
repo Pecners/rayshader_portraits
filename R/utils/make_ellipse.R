@@ -25,7 +25,6 @@ make_ellipse <- function(center_coords,
     st_cast(to = "POLYGON") |>
     st_convex_hull()
 
-
 }
 
 # 

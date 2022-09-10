@@ -62,6 +62,7 @@ walk(seq(from = 0, to = 360, by = 3), function(i) {
   
   # Set up color palette. The `pal` argument will be used in file names,
   # so it's important. `colors` will also be passed along. 
+  pal <- "homer1" 
   
   colors <- met.brewer("Homer1", direction = -1)
   swatchplot(colors)
