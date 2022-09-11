@@ -4,7 +4,16 @@ make_ellipse <- function(center_coords,
                          height_factor = 1,
                          width_factor = 1,
                          npc, 
-                         tilt = 0) {
+                         tilt = 0,
+                         crs_transform) {
+  
+  transformed_coords <- tibble(
+    x = center_coords[1],
+    y = center_coords[2]
+    ) |> 
+    st_as_sf(coords = c("y", "x"), crs = 4326) |> 
+    st_transform(crs = crs_transform)
+  
   rad <- (tilt * pi) / 180
 
   tmp <- map_df(1:npc, function(i) {
@@ -18,9 +27,9 @@ make_ellipse <- function(center_coords,
   }) 
   
   tmp |> 
-    mutate(x = center_coords[1] + x,
-           y = center_coords[2] + y) |> 
-    st_as_sf(coords = c("y", "x"), crs = 4326) |>
+    mutate(x = st_bbox(transformed_coords)[2] + x,
+           y = st_bbox(transformed_coords)[1] + y) |> 
+    st_as_sf(coords = c("y", "x"), crs = crs_transform) |>
     summarise() |>
     st_cast(to = "POLYGON") |>
     st_convex_hull()

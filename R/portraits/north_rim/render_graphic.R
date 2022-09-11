@@ -19,11 +19,11 @@ map <- "north_rim"
 
 coords <- coords <- c(36.19362612663035, -112.04858816687755)
 
-walk(seq(from = 0, to = 360, by = 3), function(i) {
+walk(seq(from = 0, to = 360, by = 2), function(i) {
   # NPS boundaries source: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True
   
-  data <- make_ellipse(coords, r = .15, height_factor = 3, width_factor = .5, npc = 360, tilt = i) |> 
-    st_transform(crs = 2223)
+  data <- make_ellipse(coords, r = 50000, height_factor = 3, width_factor = .5, 
+                       npc = 360, tilt = i, crs = 2223) 
   
   d_cent <- st_centroid(data) |> 
     st_transform(crs = 4326)
@@ -38,7 +38,8 @@ walk(seq(from = 0, to = 360, by = 3), function(i) {
   data |>
     ggplot() +
     geom_sf(data = spData::us_states) + 
-    geom_sf(fill = "red")
+    geom_sf(fill = "red") +
+    labs(title = st_area(data))
   
   
   ################
