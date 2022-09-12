@@ -43,14 +43,8 @@ water_color <- colors[7]
 text_color <- colors[1]
 
 loc_plot <- ggplot(data = w) +
-  geom_sf(data = water, color = NA, fill = alpha(water_color, .75)) +
-  geom_sf(fill = text_color, size = .1, color = "white") +
-  geom_sf(data = spot, fill = colors[8], stroke = 0,
-          size = 7, shape = 21) +
-  geom_sf(data = spot, fill = colors[7], stroke = 0,
-          size = 5, shape = 21) +
-  geom_sf(data = spot, fill = colors[6], stroke = 0,
-          size = 3, shape = 21) + 
+  geom_sf(data = water, color = NA, fill = alpha("white", .75)) +
+  geom_sf(fill = "red", size = .1, color = "white") +
   coord_sf(crs = prj) +
   theme_void() 
 
