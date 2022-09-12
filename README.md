@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Congaree National Park](R/portraits/congaree)
+
+![Congaree National Park](tracked_graphics/congaree_titled_pink_greens_insta_small.png)
+
 ## [Badlands National Park](R/portraits/badlands)
 
 ![Badlands National Park](tracked_graphics/badlands_titled_tangerine_blues_insta_small.png)
