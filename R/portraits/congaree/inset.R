@@ -111,9 +111,9 @@ sc |>
   geom_sf_text(data = data, aes(label = UNIT_NAME), family = "Skia",
                nudge_y = -20000, color = text_color, size = 10) +
   geom_star(data = with_coords, aes(x = X, y = Y),
-            fill = "grey70", color = "grey70", size = 3) +
-  geom_sf_text(data = columbia, aes(label = NAME), color = "grey70", size = 10,
-               family = "Skia", nudge_x = 47500, nudge_y = 10000) +
+            fill = "grey50", color = "grey50", size = 3) +
+  geom_sf_text(data = columbia, aes(label = NAME), color = "grey50", size = 10,
+               family = "Skia", nudge_x = 45000, nudge_y = 10000) +
   coord_sf(crs = prj, clip = "off") +
   theme_void()
 
