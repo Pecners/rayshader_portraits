@@ -31,7 +31,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Olympic National Park](R/portraits/congaree)
 
-![Olympic National Park](tracked_graphics/congaree_titled_pink_greens_insta_small.png)
+![Olympic National Park](tracked_graphics/olympic_titled_glacier_arches2_insta_small.png)
 
 ## [Congaree National Park](R/portraits/congaree)
 
