@@ -29,7 +29,11 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
-## [Olympic National Park](R/portraits/congaree)
+## [Mount Rainier National Park](R/portraits/rainier)
+
+![Mount Rainier National Park](tracked_graphics/rainier_titled_glacier_arches2_insta_small.png)
+
+## [Olympic National Park](R/portraits/olympic)
 
 ![Olympic National Park](tracked_graphics/olympic_titled_glacier_arches2_insta_small.png)
 
