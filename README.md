@@ -29,9 +29,9 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
-## [North Cascades National Park](R/portraits/north_cascades)
+## [North Cascades National Park](R/portraits/north_cascade)
 
-![North Cascades National Park](tracked_graphics/north_cascades_titled_glacier_arches2_insta_small.png)
+![North Cascades National Park](tracked_graphics/north_cascade_titled_glacier_arches2_insta_small.png)
 
 
 ## [Mount Rainier National Park](R/portraits/rainier)
