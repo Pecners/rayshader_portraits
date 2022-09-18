@@ -85,6 +85,8 @@ titles <- c(
   "Mount Rainier"
 )
 
+
+
 # Use darker red for text color
 pal <- "glacier_arches2"
 
@@ -138,7 +140,7 @@ ff <- add_main_annotations(map = "washington_3", pal = pal,
                            inset = "images/washington_3/final_inset.png",
                            inset_coords = c(.27, .225),
                            inset_size = 3500,
-                           small_size = 2500)
+                           small_size = 1900)
 
 
 
