@@ -29,6 +29,11 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Washington National Parks](R/portraits/washington_3)
+
+![Washington National Parks](tracked_graphics/washington_3_titled_glacier_arches2_insta_small.png)
+
+
 ## [North Cascades National Park](R/portraits/north_cascade)
 
 ![North Cascades National Park](tracked_graphics/north_cascade_titled_glacier_arches2_insta_small.png)
