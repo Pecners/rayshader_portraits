@@ -5,6 +5,7 @@ library(rayshader)
 library(glue)
 library(colorspace)
 library(NatParksPalettes)
+library(MetBrewer)
 library(scico)
 
 ###################################
@@ -50,7 +51,7 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 12
+z <- 10
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
 
