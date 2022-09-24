@@ -22,3 +22,5 @@ img_animated
 image_write(image = img_animated,
             path = "images/voyageurs/voyageurs.gif")
 
+file.copy("images/voyageurs/voyageurs.gif",
+          "tracked_graphics/voyageurs.gif")
