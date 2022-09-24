@@ -66,17 +66,6 @@ mat[mat < 300] <- NA
 # so it's important. `colors` will also be passed along. 
 
 
-
-pal <- "gray_jolla"
-
-c1 <- scico(palette = "grayC", n = 5)
-c2 <- scico(palette = "lajolla", n = 5)
-colors <- c(c1[1:4], rev(c2[1:4]))
-
-swatchplot(colors)
-
-
-
 pal <- "blue_green"
 
 colors <- c(
@@ -217,7 +206,4 @@ saveRDS(list(
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"))
 }
-
-
-
 
