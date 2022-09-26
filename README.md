@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Kobuk Valley National Park](R/portraits/kobuk)
+
+![Kobuk Valley National Park](tracked_graphics/kobuk_titled_alaska_flag_insta_small.png)
+
 ## [Voyageurs National Park](R/portraits/voyageurs)
 
 ![Voyageurs National Park](tracked_graphics/voyageurs.gif)
