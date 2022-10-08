@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Katmai National Park](R/portraits/katmai_bear)
+
+![Katmai National Park](tracked_graphics/katmai_bear_titled_golden_brown_insta_small.png)
+
 ## [Kobuk Valley National Park](R/portraits/kobuk)
 
 ![Kobuk Valley National Park](tracked_graphics/kobuk_titled_alaska_flag_insta_small.png)
