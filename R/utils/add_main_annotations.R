@@ -50,11 +50,13 @@ add_main_annotations <- function(
     caption_size,
     caption_coords,
     caption_align,
+    caption = TRUE,
     # twitter icon might need dialing in
     # scaling of twitter icon
     twitter_icon_size = 75,
     # positioning of twitter icon
     twitter_icon_coords = c(-450, 65),
+    twitter_icon_alpha = .5,
     # use to add svg
     svg_file = NULL,
     svg_coords,
@@ -145,7 +147,7 @@ add_main_annotations <- function(
   # Twitter logo for caption
   # Get logo SVG, draw it, and then save to png
   
-  twitter <- fa("twitter", fill = text_color, fill_opacity = .5)
+  twitter <- fa("twitter", fill = text_color, fill_opacity = twitter_icon_alpha)
   
   grid.newpage()
   tmp <- tempfile()
@@ -158,21 +160,24 @@ add_main_annotations <- function(
   
   # Caption
   
-  cap_text <- glue("Graphic by Spencer Schien (     @MrPecners) | ", 
-                   "Data from {data_source}")
-  
-  if (!is.null(caption_coords)) {
-    cap_loc <- normalize_coords(img = orig, coords = caption_coords, align = caption_align)
-    img_ <- image_annotate(img_, text = cap_text, font = caption_font,
-                           color = alpha(text_color, .5), size = caption_size, 
-                           gravity = cap_loc$gravity,
-                           location = cap_loc$loc_coords)
-    cat(glue("Caption text: {cap_loc$loc_coords}, {cap_loc$gravity}"), "\n")
-  } else { 
-    img_ <- image_annotate(img_, cap_text, 
-                           font = caption_font, location = "+0+50",
-                           color = alpha(text_color, .5), size = caption_size, gravity = "south")
+  if (caption) {
+    cap_text <- glue("Graphic by Spencer Schien (     @MrPecners) | ", 
+                     "Data from {data_source}")
+    
+    if (!is.null(caption_coords)) {
+      cap_loc <- normalize_coords(img = orig, coords = caption_coords, align = caption_align)
+      img_ <- image_annotate(img_, text = cap_text, font = caption_font,
+                             color = alpha(text_color, .5), size = caption_size, 
+                             gravity = cap_loc$gravity,
+                             location = cap_loc$loc_coords)
+      cat(glue("Caption text: {cap_loc$loc_coords}, {cap_loc$gravity}"), "\n")
+    } else { 
+      img_ <- image_annotate(img_, cap_text, 
+                             font = caption_font, location = "+0+50",
+                             color = alpha(text_color, .5), size = caption_size, gravity = "south")
+    }
   }
+  
   
   # Twitter
   
