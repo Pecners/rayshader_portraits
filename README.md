@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Mount Katmai](R/portraits/mount_katmai)
+
+![Mount Katmai](tracked_graphics/mount_katmai_titled_acadia_insta_small.png)
+
 ## [Katmai National Park](R/portraits/katmai_bear)
 
 ![Katmai National Park](tracked_graphics/katmai_bear_titled_golden_brown_insta_small.png)
