@@ -39,4 +39,5 @@ add_main_annotations(map = header$map, pal = header$pal,
                      svg_size = NULL,
                      inset = "images/mount_katmai/acadia_inset.png",
                      inset_coords = c(.25, .4),
-                     inset_size = 1500)
+                     inset_size = 1500,
+                     small_size = 3000)
