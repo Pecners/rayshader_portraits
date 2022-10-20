@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Pillars of Creation](R/portraits/pillars_of_creation)
+
+![Pillars of Creation](tracked_graphics/pillars_of_creation_titled_img_insta_small.png)
+
 ## [Pillars of Creation](R/portraits/death_pillars)
 
 ![Pillars of Creation](tracked_graphics/death_pillars_titled_gray_jolla_insta_small.png)

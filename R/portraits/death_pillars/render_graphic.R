@@ -18,6 +18,7 @@ map <- "death_pillars"
 img <- raster::raster("assets/pillars_of_creation.png")
 mat <- raster_to_matrix(img)
 
+raster::plot(img)
 
 # Set up color palette. The `pal` argument will be used in file names,
 # so it's important. `colors` will also be passed along. 
