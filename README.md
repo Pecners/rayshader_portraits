@@ -29,6 +29,22 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Pillars of Creation](R/pillars_combined)
+
+![Pillars of Creation](tracked_graphics/pillars_together_titled_none_insta_small.png)
+
+## [Pillars of Creation](R/portraits/fourth_pillars)
+
+![Pillars of Creation](tracked_graphics/fourth_pillars_titled_glacier_arches2_insta_small.png)
+
+## [Pillars of Creation](R/portraits/fifth_pillars)
+
+![Pillars of Creation](tracked_graphics/fifth_pillarstitled_pink_greens_insta_small.png)
+
+## [Pillars of Creation](R/portraits/third_pillars)
+
+![Pillars of Creation](tracked_graphics/third_pillars_titled_pink_green_insta_small.png)
+
 ## [Pillars of Creation](R/portraits/pillars_of_creation)
 
 ![Pillars of Creation](tracked_graphics/pillars_of_creation_titled_img_insta_small.png)
