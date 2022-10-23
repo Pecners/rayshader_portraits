@@ -39,7 +39,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Pillars of Creation](R/portraits/fifth_pillars)
 
-![Pillars of Creation](tracked_graphics/fifth_pillarstitled_pink_greens_insta_small.png)
+![Pillars of Creation](tracked_graphics/fifth_pillars_titled_pink_greens_insta_small.png)
 
 ## [Pillars of Creation](R/portraits/third_pillars)
 
