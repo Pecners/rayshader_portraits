@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Death Valley](R/death_halloween)
+
+![Death Valley](tracked_graphics/death_halloween_titled_halloween_insta_small.png)
+
 ## [Pillars of Creation](R/pillars_combined)
 
 ![Pillars of Creation](tracked_graphics/pillars_together_titled_none_insta_small.png)
