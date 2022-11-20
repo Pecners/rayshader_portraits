@@ -63,10 +63,3 @@ make_ellipse <- function(center_coords,
 
 }
 
-# 
-# make_ellipse(c(0,0), .5, 1000, -30) |> 
-#   ggplot() +
-#   geom_sf(data = spData::us_states) +
-#   geom_sf(color = "red") +
-#   coord_sf(crs = 2229)
-
