@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Michigan Population Density](R/michigan_pop)
+
+![Michigan Population Density](tracked_graphics/titled_michigan_pop_small.png)
+
 ## [Death Valley](R/death_halloween)
 
 ![Death Valley](tracked_graphics/death_halloween_titled_halloween_insta_small.png)
