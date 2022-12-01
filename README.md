@@ -29,15 +29,19 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
-## [Michigan Population Density](R/michigan_pop)
+## [Colorado River Population Density](R/portraits/colorado_river)
+
+![Colorado River Population Density](tracked_graphics/titled_co_river_small.png)
+
+## [Michigan Population Density](R/portraits/michigan_pop)
 
 ![Michigan Population Density](tracked_graphics/titled_mi_pop_small.png)
 
-## [Death Valley](R/death_halloween)
+## [Death Valley](R/portraits/death_halloween)
 
 ![Death Valley](tracked_graphics/death_halloween_titled_halloween_insta_small.png)
 
-## [Pillars of Creation](R/pillars_combined)
+## [Pillars of Creation](R/portraits/pillars_combined)
 
 ![Pillars of Creation](tracked_graphics/pillars_together_titled_none_insta_small.png)
 
