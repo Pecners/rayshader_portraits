@@ -31,7 +31,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Michigan Population Density](R/michigan_pop)
 
-![Michigan Population Density](tracked_graphics/titled_michigan_pop_small.png)
+![Michigan Population Density](tracked_graphics/titled_mi_pop_small.png)
 
 ## [Death Valley](R/death_halloween)
 
