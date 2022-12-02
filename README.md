@@ -35,7 +35,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Colorado River Population Density](R/portraits/colorado_river)
 
-![Colorado River Population Density](tracked_graphics/titled_co_river_small.png)
+![Colorado River Population Density](tracked_graphics/titled_co_river_pop_small.png)
 
 ## [Michigan Population Density](R/portraits/michigan_pop)
 

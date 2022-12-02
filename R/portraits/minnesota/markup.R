@@ -19,7 +19,7 @@ text_color <- colors[5]
 
 read_lines("R/portraits/michigan_pop/CompassRose.svg") |> 
   gsub(x = _, pattern = "#326812", text_color) |> 
-  gsub(x = _, pattern = "#99ce64", colors[7]) |> 
+  gsub(x = _, pattern = "#99ce64", colors[2]) |> 
   write_lines(file = t_rose)
 
 rose <- read_svg(t_rose)
