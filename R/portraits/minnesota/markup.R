@@ -74,7 +74,7 @@ img |>
                  location = "+200+100", font = "El Messiri",
                  color = alpha(text_color, .5),
                  size = 60, weight = 700) |> 
-  image_composite(image_modulate(f_image, saturation = 75) |> 
+  image_composite(image_modulate(f_image, saturation = 50) |> 
                     image_scale("50%x"), 
                   gravity = "east", 
                   offset = "+200+0") |> 
