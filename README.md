@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [The Nile Population Density](R/portraits/nile)
+
+![The Nile Population Density](tracked_graphics/titled_nile_river_pop_small.png)
+
 ## [North Carolina Population Density](R/portraits/north_carolina)
 
 ![North Carolina Population Density](tracked_graphics/titled_nc_pop_small.png)
