@@ -10,9 +10,22 @@ library(stars)
 library(rnaturalearth)
 library(MetBrewer)
 
-###################################
-# Set up polygon for clipping DEM #
-###################################
+codes <- c(
+  "TZ",
+  "UG",
+  "ET",
+  "CD",
+  "SS",
+  "SD",
+  "EG"
+)
+
+# Kontur data source: https://data.humdata.org/dataset/kontur-population-united-states-of-america
+
+data <- map_df(codes, function(i) {
+  st_read(glue("data/kontur/kontur_population_{i}_20220630.gpkg"))
+})
+
 
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
@@ -20,11 +33,15 @@ library(MetBrewer)
 map <- "nile"
 
 gl <- ne_download(type = "rivers_lake_centerlines", 
-                  category = "physical", scale = "large")  %>%
+                  category = "physical", scale = "large")  |> 
   st_as_sf() 
 
 riv <- gl |> 
   filter(str_detect(name_en, "Nile"))
+
+riv |> 
+  st_union() |> 
+  st_length()
 
 
 riv_buff <- riv |> 
@@ -60,22 +77,6 @@ these_countries |>
   arrange(sovereignt) |> 
   pull(sovereignt)
 
-codes <- c(
-  "TZ",
-  "UG",
-  "ET",
-  "CD",
-  "SS",
-  "SD",
-  "EG"
-)
-
-# Kontur data source: https://data.humdata.org/dataset/kontur-population-united-states-of-america
-
-data <- map_df(codes, function(i) {
-  st_read(glue("data/kontur/kontur_population_{i}_20220630.gpkg"))
-})
-data <- st_transform(data, st_crs(riv_buff))
 
 st_d <- st_intersection(data, riv_buff)
 
