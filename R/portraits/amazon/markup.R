@@ -40,12 +40,13 @@ img |>
                  location = "+200+100", font = "El Messiri",
                  color = alpha(text_color, .75),
                  size = 200) |> 
-  image_annotate(text = "Data: Kontur Population Data", gravity = "southeast",
-                 location = "+200+300", font = "El Messiri",
+  image_annotate(text = "Data: Kontur Population (Released 2022-06-30)", 
+                 gravity = "southeast",
+                 location = "+200+100", font = "El Messiri",
                  color = alpha(text_color, .5),
                  size = 125, weight = 700) |> 
   image_annotate(text = "Graphic: Spencer Schien (@MrPecners)", gravity = "southeast",
-                 location = "+200+100", font = "El Messiri",
+                 location = "+200+300", font = "El Messiri",
                  color = alpha(text_color, .5),
                  size = 125, weight = 700) |> 
   # image_composite(image_modulate(f_image, saturation = 100) |> 
