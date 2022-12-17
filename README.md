@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Kansas Population Density](R/portraits/kansas)
+
+![Kansas Population Density](tracked_graphics/titled_ks_pop_small.png)
+
 ## [Amazon River Population Density](R/portraits/amazon)
 
 ![Amazon River Population Density](tracked_graphics/titled_amazon_river_pop_small.png)
