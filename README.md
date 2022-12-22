@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Mediterranean Coast Population Density](R/portraits/med)
+
+![Mediterranean Coast Population Density](tracked_graphics/titled_med_pop_small.png)
+
 ## [Illinois Population Density](R/portraits/illinois)
 
 ![Illinois Population Density](tracked_graphics/titled_il_pop_small.png)

@@ -1,0 +1,7 @@
+I made this in R using the rayshader package (code [here](https://github.com/Pecners/rayshader_portraits)). Data from the [Kontur Population Dataset](https://data.humdata.org/dataset/kontur-population-dataset). This dataset estimates worldwide population in 400m hexagonal geometries using a combination of "GHSL, Facebook, Microsoft Buildings, Copernicus Global Land Service Land Cover, Land Information New Zealand, and OpenStreetMap data." The map is presented at an angle to better illustrate heights.
+
+I also made a live-coding tutorial for how I make these maps, find the video [here](https://www.youtube.com/watch?v=zgFXVhmKNbU).
+
+I'm more active posting this kind of stuff on Twitter, follow me there if you're interested ([@MrPecners](https://twitter.com/MrPecners)).
+
+I've also posted other states on their respective subs, see my other maps on my profile: u/Pecners.
