@@ -9,6 +9,9 @@ library(tigris)
 library(stars)
 library(rnaturalearth)
 library(MetBrewer)
+library(parallel)
+library(doParallel)
+library(magick)
 
 codes <- c(
   "CH",
@@ -41,7 +44,7 @@ riv |>
 
 riv_buff <- riv |> 
   st_transform(crs = st_crs(data)) |> 
-  st_buffer(20000) |> 
+  st_buffer(25000) |> 
   st_union()
 
 int <- st_intersects(data, riv_buff)
@@ -72,7 +75,7 @@ if (yind > xind) {
 }
 
 # convert to raster
-size <- 5000
+size <- 1000
 rast <- st_rasterize(st_d |> 
                        select(population, geom),
                      nx = floor(size * x_rat), ny = floor(size * y_rat))
@@ -115,7 +118,7 @@ mat |>
           solid = FALSE,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
-          z = 15,
+          z = 15*8,
           # Set the location of the shadow, i.e. where the floor is.
           # This is on the same scale as your data, so call `zelev` to see the
           # min/max, and set it however far below min as you like.
@@ -133,79 +136,125 @@ mat |>
           theta = 0, 
           background = "white") 
 
-render_camera(phi = 60, zoom = 1, theta = 0)
-
-
-###############################
-# Create High Quality Graphic #
-###############################
-
-# You should only move on if you have the object set up
-# as you want it, including colors, resolution, viewing position, etc.
-
-# Ensure dir exists for these graphics
-if (!dir.exists(glue("images/{map}"))) {
-  dir.create(glue("images/{map}"))
-}
-
-# Set up outfile where graphic will be saved.
-# Note that I am not tracking the `images` directory, and this
-# is because these files are big enough to make tracking them on
-# GitHub difficult. 
-outfile <- str_to_lower(glue("images/{map}/{map}_{pal}.png"))
-
-# Now that everything is assigned, save these objects so we
-# can use then in our markup script
-saveRDS(list(
-  map = map,
-  pal = pal,
-  colors = colors,
-  outfile = outfile,
-  coords = coords
-), glue("R/portraits/{map}/header.rds"))
-
-{
-  # Test write a PNG to ensure the file path is good.
-  # You don't want `render_highquality()` to fail after it's 
-  # taken hours to render.
-  if (!file.exists(outfile)) {
-    png::writePNG(matrix(1), outfile)
+walk(seq(from = 1, to = 360, by = 2), function(a) {
+  
+  cat(crayon::red(glue("Angle {a}")), "\n")
+  
+  render_camera(phi = 45, zoom = 1, theta = a)
+  
+  
+  ###############################
+  # Create High Quality Graphic #
+  ###############################
+  
+  # You should only move on if you have the object set up
+  # as you want it, including colors, resolution, viewing position, etc.
+  
+  
+  angle <- sprintf("%04s", a)
+  
+  # Set up outfile where graphic will be saved.
+  # Note that I am not tracking the `images` directory, and this
+  # is because these files are big enough to make tracking them on
+  # GitHub difficult. 
+  outfile <- str_to_lower(glue("images/{map}/z_{map}_{pal}_{angle}.png"))
+  
+  # Now that everything is assigned, save these objects so we
+  # can use then in our markup script
+  # saveRDS(list(
+  #   map = map,
+  #   pal = pal,
+  #   colors = colors,
+  #   outfile = outfile,
+  #   coords = coords
+  # ), glue("R/portraits/{map}/header.rds"))
+  
+  {
+    # Test write a PNG to ensure the file path is good.
+    # You don't want `render_highquality()` to fail after it's 
+    # taken hours to render.
+    if (!file.exists(outfile)) {
+      png::writePNG(matrix(1), outfile)
+    }
+    # I like to track when I start the render
+    start_time <- Sys.time()
+    cat(glue("Start Time: {start_time}"), "\n")
+    render_highquality(
+      # We test-wrote to this file above, so we know it's good
+      outfile, 
+      # See rayrender::render_scene for more info, but best
+      # sample method ('sobol') works best with values over 256
+      samples = 300, 
+      # Turn light off because we're using environment_light
+      light = TRUE,
+      lightdirection = rev(c(185, 185, 175, 175) - a),
+      lightcolor = c(colors[3], "white", colors[7], "white"),
+      lightintensity = c(750, 50, 1000, 50),
+      lightaltitude = c(10, 80, 10, 80),
+      # All it takes is accidentally interacting with a render that takes
+      # hours in total to decide you NEVER want it interactive
+      interactive = FALSE,
+      preview = FALSE,
+      # HDR lighting used to light the scene
+      # environment_light = "assets/env/phalzer_forest_01_4k.hdr",
+      # # environment_light = "assets/env/small_rural_road_4k.hdr",
+      # # Adjust this value to brighten or darken lighting
+      # intensity_env = 1.5,
+      # # Rotate the light -- positive values move it counter-clockwise
+      # rotate_env = 130,
+      # This effectively sets the resolution of the final graphic,
+      # because you increase the number of pixels here.
+      # width = round(6000 * wr), height = round(6000 * hr),
+      width = 800, height = 800
+    )
+    end_time <- Sys.time()
+    cat(glue("Total time: {end_time - start_time}"), "\n")
   }
-  # I like to track when I start the render
-  start_time <- Sys.time()
-  cat(glue("Start Time: {start_time}"), "\n")
-  render_highquality(
-    # We test-wrote to this file above, so we know it's good
-    outfile, 
-    # See rayrender::render_scene for more info, but best
-    # sample method ('sobol') works best with values over 256
-    samples = 450, 
-    # Turn light off because we're using environment_light
-    light = TRUE,
-    lightdirection = rev(c(315, 315, 45, 45)),
-    lightcolor = c(colors[3], "white", colors[7], "white"),
-    lightintensity = c(750, 50, 1000, 50),
-    lightaltitude = c(10, 80, 10, 80),
-    # All it takes is accidentally interacting with a render that takes
-    # hours in total to decide you NEVER want it interactive
-    interactive = FALSE,
-    preview = FALSE,
-    # HDR lighting used to light the scene
-    # environment_light = "assets/env/phalzer_forest_01_4k.hdr",
-    # # environment_light = "assets/env/small_rural_road_4k.hdr",
-    # # Adjust this value to brighten or darken lighting
-    # intensity_env = 1.5,
-    # # Rotate the light -- positive values move it counter-clockwise
-    # rotate_env = 130,
-    # This effectively sets the resolution of the final graphic,
-    # because you increase the number of pixels here.
-    # width = round(6000 * wr), height = round(6000 * hr),
-    width = 10000, height = 10000
-  )
-  end_time <- Sys.time()
-  cat(glue("Total time: {end_time - start_time}"))
+})
+
+# annotate frames
+
+f <- list.files("images/lake_geneva")
+no_vid <- f[which(!str_detect(f, ".mp4"))]
+
+if (!dir.exists("images/lake_geneva/titled")) {
+  dir.create("images/lake_geneva/titled")
 }
 
+walk(no_vid, function(v) {
+  img <- image_read(glue("images/lake_geneva/{v}"))
+  
+  img |> 
+    image_crop(geometry = "800x600+0+0", gravity = "center") |> 
+    image_annotate(text = "POPULATION DENSITY AROUND", 
+                   gravity = "north", 
+                   location = "+10+10", font = "El Messiri",
+                   color = text_color,
+                   size = 15) |> 
+    image_annotate(text = "Lake Geneva", gravity = "north",
+                   location = "+10+30", font = "El Messiri",
+                   color = text_color,
+                   size = 60, weight = 700) |> 
+    image_annotate(text = glue("Graphic by Spencer Schien (@MrPecners) | ",
+                               "Kontur Population Data (Released June 30, 2022)"),
+                   gravity = "south",
+                   location = "+0+10", font = "El Messiri",
+                   color = alpha(text_color, .5),
+                   size = 10, weight = 700) |> 
+    image_write(glue("images/lake_geneva/titled/{v}.png"))
+})
 
+# get annotated frames for video compilation
 
+f_titled <- list.files("images/lake_geneva/titled")
 
+moving <- no_vid[which(str_detect(f_titled, "z_"))]
+ff <- c(
+  paste0("images/lake_geneva/titled/", moving),
+  paste0("images/lake_geneva/titled/", f_titled)
+)
+  
+
+av::av_encode_video(ff, "images/lake_geneva/video/titled.mp4")
+file.copy("images/lake_geneva/video/titled.mp4",
+          "tracked_graphics/titled_lake_geneva.mp4")
