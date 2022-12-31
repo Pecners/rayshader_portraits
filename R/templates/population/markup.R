@@ -23,7 +23,7 @@ cat(annot)
 
 img |> 
   image_crop(geometry = "7250x4000+400+0", gravity = "center") |> 
-  image_annotate(text = glue("{str_to_title(CONFIG_MAP)} Population Density"), 
+  image_annotate(text = glue("{str_to_title('CONFIG_MAP')} Population Density"), 
                  gravity = "northwest",
                  location = "+200+100", font = "El Messiri",
                  color = text_color,

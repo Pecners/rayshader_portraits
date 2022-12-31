@@ -7,43 +7,49 @@ header <- readRDS("R/portraits/mississippi/header.rds")
 colors <- header$colors
 swatchplot(colors)
 
-text_color <- colors[1]
+text_color <- colors[4]
 
 img <- image_read(header$outfile)
 
 
 annot <- glue("This map shows population density of ",
-              "{str_to_title(mississippi)}. ",
+              "{str_to_title('mississippi')}. ",
               "Population estimates are bucketed ",
               "into 400 meter (about 1/4 mile) hexagons.") |> 
-  str_wrap(45)
+  str_wrap(20)
 cat(annot)
 
 
 
 img |> 
-  image_crop(geometry = "7250x4000+400+0", gravity = "center") |> 
-  image_annotate(text = glue("{str_to_title(mississippi)} Population Density"), 
-                 gravity = "northwest",
-                 location = "+200+100", font = "El Messiri",
+  image_crop(geometry = "7500x6500+0+0", gravity = "center") |> 
+  image_annotate(text = glue("{str_to_title('mississippi')}"), 
+                 gravity = "north",
+                 location = "-2000+300", font = "El Messiri",
                  color = text_color,
-                 size = 225, weight = 700) |> 
-  image_annotate(text = annot, gravity = "northeast",
-                 location = "+200+500", font = "El Messiri",
+                 size = 400, weight = 700) |> 
+  image_annotate(text = "POPULATION DENSITY", 
+                 gravity = "north",
+                 location = "-2000+800", font = "El Messiri",
+                 color = text_color,
+                 size = 200) |> 
+  image_annotate(text = annot, gravity = "southeast",
+                 location = "+400+400", font = "El Messiri",
                  color = alpha(text_color, .75),
-                 size = 115) |> 
+                 size = 150) |> 
   image_annotate(text = "Kontur Population Data (Released June 30, 2022)",
                  gravity = "southwest",
                  location = "+200+100", font = "El Messiri",
                  color = alpha(text_color, .5),
                  size = 80, weight = 700) |> 
-  image_annotate(text = "Graphic: Spencer Schien (@MrPecners)", gravity = "southwest",
+  image_annotate(text = "Graphic: Spencer Schien (@MrPecners)", 
+                 gravity = "southwest",
                  location = "+200+225", font = "El Messiri",
                  color = alpha(text_color, .5),
                  size = 80, weight = 700) |>
-  image_write("images/mississippi/titled_STATE_pop.png")
+  image_write("images/mississippi/titled_ms_pop.png")
 
-image_read("images/mississippi/titled_STATE_pop.png") |> 
-  image_scale(geometry = "60%x") |> 
-  image_write("tracked_graphics/titled_STATE_pop_small.png")
+image_read("images/mississippi/titled_ms_pop.png") |> 
+  image_scale(geometry = "49%x") |> 
+  image_write("tracked_graphics/titled_ms_pop_small.png")
 
