@@ -29,6 +29,11 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Lake Geneva Population Density](R/portraits/lake_geneva)
+
+https://user-images.githubusercontent.com/47727946/209483858-91c3afed-be72-4fd5-8ba8-0ec8a64ad0b6.mp4
+
+
 ## [Washington Population Density](R/portraits/washington)
 
 ![Washington Population Density](tracked_graphics/titled_wa_pop_small.png)
