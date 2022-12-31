@@ -13,7 +13,7 @@ img <- image_read(header$outfile)
 
 
 annot <- glue("This map shows population density of ",
-              "{str_to_title(CONFIG_MAP)}. ",
+              "{str_to_title('CONFIG_MAP')}. ",
               "Population estimates are bucketed ",
               "into 400 meter (about 1/4 mile) hexagons.") |> 
   str_wrap(45)
