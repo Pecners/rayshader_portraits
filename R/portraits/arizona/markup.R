@@ -46,6 +46,6 @@ img |>
   image_write("images/arizona/titled_az_pop.png")
 
 image_read("images/arizona/titled_az_pop.png") |> 
-  image_scale(geometry = "60%x") |> 
+  image_scale(geometry = "47%x") |> 
   image_write("tracked_graphics/titled_az_pop_small.png")
 
