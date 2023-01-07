@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Population Density along the Thames](R/portraits/thames)
+
+![Population Density along the Thames](tracked_graphics/titled_thames_pop_small.png)
+
 ## [Densité de population le long de la Seine](R/portraits/seine)
 
 ![Densité de population le long de la Seine](tracked_graphics/titled_seine_pop_fr_small.png)
