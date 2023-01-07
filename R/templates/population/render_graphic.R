@@ -13,7 +13,7 @@ library(MetBrewer)
 
 map <- "CONFIG_MAP"
 
-# Kontur data source: https://data.humdata.org/dataset/kontur-population-united-states-of-america
+# Kontur data source: https://data.humdata.org/organization/kontur
 
 data <- st_read("data/kontur/kontur_population_US_20220630.gpkg")
 
