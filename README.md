@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Oregon Population Density](R/portraits/oregon)
+
+![Oregon Population Density](tracked_graphics/titled_or_pop_small.png)
+
 ## [Comparative Population Density: St. Louis and Milwaukee](R/portraits/stl_mke)
 
 ![Comparative Population Density: St. Louis and Milwaukee](tracked_graphics/titled_stl_mke_pop_small.png)
