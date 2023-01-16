@@ -50,7 +50,7 @@ img |>
   #                size = 80, weight = 700) |>
   image_write("images/oregon/titled_or_pop.png")
 
-# I'm using system because I don't think {magick} has the functionality
+# I'm using system() because I don't think {magick} has the functionality
 # to specify stroke and weight of the annotation, so I'm using IM cli code.
 
 system(
