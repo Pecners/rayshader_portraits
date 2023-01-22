@@ -46,7 +46,7 @@ img |>
 system(
   glue("convert images/new_york/titled_ny_pop.png ",
        "-gravity North -font El-Messiri-Bold -pointsize 500 ", 
-       "-stroke '{colors[5]}' -strokewidth 10 -fill '{colors[8]}' ",
+       "-stroke '{colors[5]}' -strokewidth 15 -fill '{colors[9]}' ",
        "-annotate -2500+100 'New York' ",
        "-draw 'line {7750/2-(2500-1050)},750 {7750/2-(2500+1050)},750' ",
        "images/new_york/titled_ny_pop_done.png")
