@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Comparative Population Density: Chicago and NYC](R/portraits/chi_nyc)
+
+![Comparative Population Density: Chicago and NYC](tracked_graphics/titled_chi_nyc_pop_small.png)
+
 ## [New York Population Density](R/portraits/new_york)
 
 ![New York Population Density](tracked_graphics/titled_ny_pop_small.png)
