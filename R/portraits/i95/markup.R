@@ -34,6 +34,10 @@ svg_tmp <- image_read(tmp)
 svg_tmp
 svg_tmp <- image_scale(svg_tmp, glue("x2000"))
 
+# inset
+
+img_inset <- image_read("images/i95/tam_inset.png")
+
 img |> 
   image_crop(geometry = "9000x7000+0+700", gravity = "center") |> 
   image_annotate(text = "POPULATION DENSITY ALONG", 
@@ -55,6 +59,9 @@ img |>
                  size = 80, weight = 700) |> 
   image_composite(svg_tmp, gravity = "north",
                   offset = "+2000+4000") |> 
+  image_composite(image_scale(img_inset, geometry = "100%x"),
+                  gravity = "northwest",
+                  offset = "+300+500") |> 
   image_write("images/i95/titled_i95_pop.png")
 
 image_read("images/i95/titled_i95_pop.png") |> 

@@ -47,7 +47,7 @@ skinny_s <- st_intersection(skinny_s, land)
 
 loc_plot <- skinny_s |> 
   ggplot() +
-  geom_sf(fill = NA, color = header$colors[2],
+  geom_sf(fill = NA, color = header$colors[3],
           linewidth = .5) +
   geom_sf(data = header$inset_geo,
           fill = header$colors[7],
