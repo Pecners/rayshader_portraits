@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Comparative Population Density: Philadelphia and San Francisco](R/portraits/phi_sf)
+
+![Comparative Population Density: Philadelphia and San Francisco](tracked_graphics/titled_phi_sf_pop_small.png)
+
 ## [Interstate 95](R/portraits/i95)
 
 ![Interstate 95](tracked_graphics/titled_i95_pop_small.png)
