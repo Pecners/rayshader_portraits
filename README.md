@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Comparative Population Density: Cincinnati and Kansas City](R/portraits/cin_kc)
+
+![Comparative Population Density: Philadelphia and San Francisco](tracked_graphics/titled_cin_kc_pop_small.png)
+
 ## [Comparative Population Density: Philadelphia and San Francisco](R/portraits/phi_sf)
 
 ![Comparative Population Density: Philadelphia and San Francisco](tracked_graphics/titled_phi_sf_pop_small.png)
