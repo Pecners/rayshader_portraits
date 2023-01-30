@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Idaho Population Density](R/portraits/new_york)
+
+![Idaho Population Density](tracked_graphics/titled_ny_pop_small.png)
+
 ## [Comparative Population Density: Cincinnati and Kansas City](R/portraits/cin_kc)
 
 ![Comparative Population Density: Philadelphia and San Francisco](tracked_graphics/titled_cin_kc_pop_small.png)
@@ -37,9 +41,9 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ![Comparative Population Density: Philadelphia and San Francisco](tracked_graphics/titled_phi_sf_pop_small.png)
 
-## [Interstate 95](R/portraits/i95)
+## [Population Density along Interstate 95](R/portraits/i95)
 
-![Interstate 95](tracked_graphics/titled_i95_pop_small.png)
+![Population Density along Interstate 95](tracked_graphics/titled_i95_pop_small.png)
 
 ## [Comparative Population Density: Chicago and NYC](R/portraits/chi_nyc)
 

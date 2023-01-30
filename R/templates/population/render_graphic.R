@@ -14,30 +14,29 @@ library(MetBrewer)
 map <- "CONFIG_MAP"
 
 # Kontur data source: https://data.humdata.org/organization/kontur
-
-data <- st_read("data/kontur/kontur_population_US_20220630.gpkg")
+d_layers <- st_layers("data/kontur/kontur_population_US_20220630.gpkg")
+d_crs <- d_layers[["crs"]][[1]][[2]]
 
 s <- states() |> 
-  st_transform(crs = st_crs(data))
+  st_transform(crs = d_crs)
 
 st <- s |> 
-  filter(NAME == str_to_title("CONFIG_MAP"))
+  filter(NAME == str_to_title(str_replace_all("CONFIG_MAP", "_", " ")))
 
-st |> 
+wkt_st <- st_as_text(st[[1,"geometry"]])
+
+data <- st_read("data/kontur/kontur_population_US_20220630.gpkg",
+                wkt_filter = wkt_st)
+
+data |> 
   ggplot() +
   geom_sf()
 
-int <- st_intersects(data, st)
+st_d <- st_join(data, st, left = FALSE)
 
-st_dd <- map_dbl(int, function(i) {
-  if (length(i) > 0) {
-    return(i)
-  } else {
-    return(0)
-  }
-})
-
-st_d <- data[which(st_dd == 1),]
+st_d |> 
+  ggplot() +
+  geom_sf()
 
 #st_d <- st_intersection(data, st)
 
