@@ -47,7 +47,7 @@ system(
        "-gravity north -font El-Messiri-Bold ",
        "-pointsize 400 -kerning 100 -stroke '{colors[4]}' -fill '{colors[4]}' ", 
        "-annotate +20+485 'KENTUCKY POPULATION DENSITY' ",
-       "-background none -blur 100x15 +repage ",
+       "-background none -blur 50x15 +repage ",
        "-stroke '{colors[4]}' -strokewidth 5 -fill '{colors[6]}' ",
        "-kerning 100 -annotate +0+500 'KENTUCKY POPULATION DENSITY' ", 
        "images/kentucky/titled_ky_pop.png +swap -gravity north ",
