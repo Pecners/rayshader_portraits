@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [New Jersey Population Density](R/portraits/new_jersey)
+
+![New Jersey Population Density](tracked_graphics/titled_nj_pop_small.png)
+
 ## [Kentucky Population Density](R/portraits/kentucky)
 
 ![Kentucky Population Density](tracked_graphics/titled_ky_pop_small.png)
