@@ -66,7 +66,7 @@ system(
        "-composite images/iowa/titled_ia_pop_done.png")
 )
 
-image_read("images/iowa/titled_ia_pop.png") |> 
+image_read("images/iowa/titled_ia_pop_done.png") |> 
   image_scale(geometry = "46%x") |> 
   image_write("tracked_graphics/titled_ia_pop_small.png")
 
