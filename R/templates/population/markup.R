@@ -1,6 +1,7 @@
 library(tidyverse)
 library(magick)
 library(glue)
+library(colorspace)
 
 # Load `header` list with needed data
 header <- readRDS("R/portraits/CONFIG_MAP/header.rds")
