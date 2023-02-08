@@ -33,6 +33,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ![Louisiana Population Density](tracked_graphics/titled_la_pop_small.png)
 
+## [Louisiana Parade Population Density](R/portraits/louisiana)
+
+![Louisiana Parade Population Density](tracked_graphics/titled_la_pop_small.png)
+
 ## [Iowa Population Density](R/portraits/iowa)
 
 ![Iowa Population Density](tracked_graphics/titled_ia_pop_small.png)
