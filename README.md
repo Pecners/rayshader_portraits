@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Grand Canyon Rims](R/portraits/gc_oval)
+
+![Grand Canyon Rims](tracked_graphics/titled_gc_oval_small.png)
+
 ## [Louisiana Population Density](R/portraits/louisiana)
 
 ![Louisiana Population Density](tracked_graphics/titled_la_pop_small.png)
