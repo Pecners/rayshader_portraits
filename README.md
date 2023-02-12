@@ -35,7 +35,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Louisiana Population Density](R/portraits/louisiana)
 
-![Louisiana Population Density](tracked_graphics/titled_la_pop_small.png)
+![Louisiana Population Density](tracked_graphics/titled_la_pop_single_small.png)
 
 ## [Louisiana Parade Population Density](R/portraits/louisiana)
 
