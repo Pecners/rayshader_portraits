@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Comparative Population Density: Seattle and Phoenix](R/portraits/sea_pheo)
+
+![Comparative Population Density: Seattle and Phoenix](tracked_graphics/titled_sea_pheo_pop_small.png)
+
 ## [Grand Canyon Rims](R/portraits/gc_oval)
 
 ![Grand Canyon Rims](tracked_graphics/titled_gc_oval_small.png)
@@ -59,7 +63,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Comparative Population Density: Cincinnati and Kansas City](R/portraits/cin_kc)
 
-![Comparative Population Density: Philadelphia and San Francisco](tracked_graphics/titled_cin_kc_pop_small.png)
+![Comparative Population Density: Cincinnati and Kansas City](tracked_graphics/titled_cin_kc_pop_small.png)
 
 ## [Comparative Population Density: Philadelphia and San Francisco](R/portraits/phi_sf)
 
