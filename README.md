@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [California Population Density](R/portraits/california)
+
+![California Population Density](tracked_graphics/titled_ca_pop_small.png)
+
 ## [Comparative Population Density: Seattle and Phoenix](R/portraits/sea_pheo)
 
 ![Comparative Population Density: Seattle and Phoenix](tracked_graphics/titled_sea_pheo_pop_small.png)
