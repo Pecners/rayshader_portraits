@@ -42,6 +42,6 @@ system(
 )
 
 
-image_read("images/young_stellar_object/titled_yso.png") |> 
+image_read("images/young_stellar_object/titled_yso_done.png") |> 
   image_scale(geometry = "47%x") |> 
   image_write("tracked_graphics/titled_yso_small.png")
