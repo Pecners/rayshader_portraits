@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Young Stellar Object](R/portraits/young_stellar_object)
+
+![Young Stellar Object](tracked_graphics/titled_yso_small.png)
+
 ## [California Population Density](R/portraits/california)
 
 ![California Population Density](tracked_graphics/titled_ca_pop_small.png)
