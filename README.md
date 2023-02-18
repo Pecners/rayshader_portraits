@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Wisconsin Population Density](R/portraits/wisconsin_again)
+
+![Wisconsin Population Density](tracked_graphics/titled_wi_again_pop_small.png)
+
 ## [Young Stellar Object](R/portraits/young_stellar_object)
 
 ![Young Stellar Object](tracked_graphics/titled_yso_small.png)
