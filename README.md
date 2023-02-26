@@ -357,7 +357,7 @@ https://user-images.githubusercontent.com/47727946/209483858-91c3afed-be72-4fd5-
 
 ![Sequoia National Park](tracked_graphics/sequoia_titled_green_gold_insta_small.png)
 
-## [Great Smoky Mountains](R/portraits/smoky_mountains)
+## [Great Smoky Mountains](R/portraits/great_smoky_mountains)
 
 ![Great Smoky Mountains](tracked_graphics/smoky_titled_gray_jolla_insta_small.png)
 
