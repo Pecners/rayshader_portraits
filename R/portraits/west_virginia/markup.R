@@ -49,6 +49,6 @@ system(
 )
 
 image_read("images/west_virginia/titled_wv_pop_done.png") |> 
-  image_scale(geometry = "60%x") |> 
+  image_scale(geometry = "54%x") |> 
   image_write("tracked_graphics/titled_wv_pop_small.png")
 
