@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [West Virginia Population Density](R/portraits/west_virginia)
+
+![West Virginia Population Density](tracked_graphics/titled_wv_pop_small.png)
+
 ## [Missouri Population Density](R/portraits/missouri)
 
 ![Missouri Population Density](tracked_graphics/titled_mo_pop_small.png)
