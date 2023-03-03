@@ -51,7 +51,7 @@ system(
        "-composite images/alabama/titled_al_pop_done.png")
 )
 
- image_read("images/alabama/titled_al_pop.png") |> 
+ image_read("images/alabama/titled_al_pop_done.png") |> 
   image_scale(geometry = "44%x") |> 
   image_write("tracked_graphics/titled_al_pop_small.png")
 
