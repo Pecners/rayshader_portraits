@@ -29,9 +29,9 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
-## [Arkansas Cities Population Density](R/portraits/ar_cities)
+## [Arkansas Cities Population Density](R/portraits/arkansas)
 
-![Arkansas Cities Population Density](tracked_graphics/titled_ar_cities_pop_small.png)
+![Arkansas Cities Population Density](tracked_graphics/titled_ar_pop_small.png)
 
 ## [Texas Cities Population Density](R/portraits/tx_cities)
 
