@@ -29,13 +29,13 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
-## [Nevada Cities Population Density](R/portraits/nevada)
+## [Nevada Population Density](R/portraits/nevada)
 
-![Nevada Cities Population Density](tracked_graphics/titled_nv_pop_small.png)
+![Nevada Population Density](tracked_graphics/titled_nv_pop_small.png)
 
-## [Arkansas Cities Population Density](R/portraits/arkansas)
+## [Arkansas Population Density](R/portraits/arkansas)
 
-![Arkansas Cities Population Density](tracked_graphics/titled_ar_pop_small.png)
+![Arkansas Population Density](tracked_graphics/titled_ar_pop_small.png)
 
 ## [Texas Cities Population Density](R/portraits/tx_cities)
 
