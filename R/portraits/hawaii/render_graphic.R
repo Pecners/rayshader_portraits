@@ -23,16 +23,51 @@ s <- states() |>
 st <- s |> 
   filter(NAME == str_to_title(str_replace_all("hawaii", "_", " ")))
 
-wkt_st <- st_as_text(st[[1,"geometry"]])
+st_bb <- st |> 
+  st_transform(crs = 4326) |> 
+  st_bbox()
+
+st_bb[["xmin"]] <- -161
+
+st_bb_sf <- st_as_sfc(st_bb)
+
+st |> 
+  ggplot() +
+  geom_sf() +
+  geom_sf(data = st_bb_sf, fill = NA, color = "red")
+
+st_skinny <- st_bb_sf |> 
+  st_as_sf() |> 
+  st_transform(crs = st_crs(st)) |> 
+  st_intersection(st)
+
+st_skinny |> 
+  ggplot() +
+  geom_sf()
+
+wkt_st <- st_as_text(st_skinny[[1,"x"]])
 
 data <- st_read("data/kontur/kontur_population_US_20220630.gpkg",
                 wkt_filter = wkt_st)
 
-data |> 
-  ggplot() +
-  geom_sf()
+address <- "https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m_land.zip"
+destdir <- tempdir()
+utils::download.file(file.path(address), zip_file <- tempfile())
+utils::unzip(zip_file, exdir = destdir)
+land <- st_read(glue("{destdir}/ne_10m_land.shp")) |> 
+  st_transform(crs = st_crs(data))
 
-st_d <- st_join(data, st, left = FALSE)
+st_land <- st_intersection(st_skinny, land)
+
+st_buff <- st_land |> 
+  st_cast("MULTILINESTRING") |> 
+  st_buffer(1609.34 * .1, endCapStyle = "FLAT", joinStyle = "MITRE") |> 
+  mutate(population = 1) |> 
+  rename(geom = x)
+
+
+st_dd <- st_join(data, st_skinny, left = FALSE)
+st_d <- bind_rows(st_dd, st_buff)
 
 st_d |> 
   ggplot() +
@@ -54,7 +89,7 @@ if (yind > xind) {
   y_rat <- yind / xind
 }
 
-size <- 8000
+size <- 9000
 rast <- st_rasterize(st_d |> 
                        select(population, geom),
                      nx = floor(size * x_rat), ny = floor(size * y_rat))
@@ -64,14 +99,23 @@ mat <- matrix(rast$population, nrow = floor(size * x_rat), ncol = floor(size * y
 
 # set up color palette
 
-pal <- "green_gold"
+pal <- "ha"
 
-c1 <- PrettyCols::prettycols("Greens")
-c2 <- PrettyCols::prettycols("Tangerines")
-colors <- scico::scico(n = 10, palette = "bamako")
+
+cols <- c(
+  "#FFC915",
+  "#FA6B47",
+  "#EE2941",
+  "#BD2064",
+  "#760512"
+)
+c2 <- mixcolor(alpha = .25, color1 =  hex2RGB("#ffffff"), 
+               color2 = hex2RGB("#FFC915")) |> 
+  hex()
+colors <- c(c2, cols)
 swatchplot(colors)
 
-texture <- grDevices::colorRampPalette(colors, bias = 4)(256)
+texture <- grDevices::colorRampPalette(colors, .5)(256)
 
 swatchplot(texture)
 
@@ -94,7 +138,7 @@ mat |>
           soliddepth = 0,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
-          z = 15,
+          z = 75/9,
           # Set the location of the shadow, i.e. where the floor is.
           # This is on the same scale as your data, so call `zelev` to see the
           # min/max, and set it however far below min as you like.
@@ -113,7 +157,7 @@ mat |>
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 35, zoom = .85, theta = 20)
+render_camera(phi = 45, zoom = .85, theta = 10)
 
 ###############################
 # Create High Quality Graphic #
@@ -161,8 +205,8 @@ saveRDS(list(
     samples = 450, 
     preview = FALSE,
     light = TRUE,
-    lightdirection = rev(c(140, 140, 150, 150)),
-    lightcolor = c(colors[1], "white", colors[10], "white"),
+    lightdirection = rev(c(235, 235, 240, 240)),
+    lightcolor = c(colors[2], "white", "#c1f2fe", "white"),
     lightintensity = c(750, 50, 1000, 50),
     lightaltitude = c(10, 80, 10, 80),
     # All it takes is accidentally interacting with a render that takes
@@ -178,8 +222,12 @@ saveRDS(list(
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
     # width = round(6000 * wr), height = round(6000 * hr),
-    width = 8000, height = 8000
+    width = 9000, height = 9000,
+    ground_material = rayrender::microfacet(roughness = .4, 
+                                            eta = c(1, .75, .1), 
+                                            kappa = c(.1, .75, 1))
   )
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"), "\n")
 }
+
