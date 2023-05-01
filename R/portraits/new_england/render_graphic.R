@@ -31,7 +31,8 @@ s <- states() |>
 
 st <- s |> 
   filter(NAME %in% ne_states) |> 
-  st_union()
+  st_union() |> 
+  st_sf()
 
 longs <- map_df(c(-67, -73), function(i) {
   tibble(x = i,
@@ -70,17 +71,17 @@ st |>
   geom_sf() +
   coord_sf(crs = 2249)
 
-int <- st_intersects(data, st)
+# int <- st_intersects(data, st)
+# 
+# st_dd <- map_dbl(int, function(i) {
+#   if (length(i) > 0) {
+#     return(i)
+#   } else {
+#     return(0)
+#   }
+# })
 
-st_dd <- map_dbl(int, function(i) {
-  if (length(i) > 0) {
-    return(i)
-  } else {
-    return(0)
-  }
-})
-
-st_dd <- data[which(st_dd == 1),] |> 
+st_dd <- st_join(data, st, left = FALSE) |> 
   st_transform(crs = 2249)
 
 st_d <- bind_rows(st_dd, grid) 
@@ -101,7 +102,7 @@ if (yind > xind) {
   y_rat <- yind / xind
 }
 
-size <- 8000
+size <- 9000
 rast <- st_rasterize(st_d |> 
                        select(population, geom),
                      nx = floor(size * x_rat), ny = floor(size * y_rat))
@@ -140,7 +141,7 @@ mat |>
           soliddepth = 0,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
-          z = 15,
+          z = 15/(9/8),
           # Set the location of the shadow, i.e. where the floor is.
           # This is on the same scale as your data, so call `zelev` to see the
           # min/max, and set it however far below min as you like.
@@ -159,7 +160,7 @@ mat |>
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 50, zoom = .6, theta = -70)
+render_camera(phi = 50, zoom = .7, theta = -70)
 
 ###############################
 # Create High Quality Graphic #
@@ -226,7 +227,7 @@ saveRDS(list(
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
     # width = round(6000 * wr), height = round(6000 * hr),
-    width = 8000, height = 8000
+    width = 9000, height = 9000
   )
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"), "\n")
