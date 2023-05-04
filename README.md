@@ -29,6 +29,14 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Massachusetts Population Density](R/portraits/mass_again)
+
+![Massachusetts Population Density](tracked_graphics/titled_ma_again_pop_small.png)
+
+## [Massachusetts Population Density](R/portraits/massachusetts)
+
+![Massachusetts Population Density](tracked_graphics/titled_ma_pop_small.png)
+
 ## [Hawaii Population Density](R/portraits/hawaii)
 
 ![Hawaii Population Density](tracked_graphics/titled_hi_pop_small.png)
