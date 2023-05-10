@@ -90,5 +90,5 @@ system(
 
 
 image_read("images/montana/titled_mt_pop_done.png") |> 
-  image_scale(geometry = "47%x") |> 
+  image_scale(geometry = "49%x") |> 
   image_write("tracked_graphics/titled_mt_pop_small.png")
