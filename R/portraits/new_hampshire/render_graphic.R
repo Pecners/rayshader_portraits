@@ -6,13 +6,12 @@ library(glue)
 library(colorspace)
 library(tigris)
 library(stars)
-library(scico)
 library(MetBrewer)
 
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
 
-map <- "montana"
+map <- "new_hampshire"
 
 # Kontur data source: https://data.humdata.org/organization/kontur
 d_layers <- st_layers("data/kontur/kontur_population_US_20220630.gpkg")
@@ -22,37 +21,20 @@ s <- states() |>
   st_transform(crs = d_crs)
 
 st <- s |> 
-  filter(NAME == str_to_title(str_replace_all("montana", "_", " ")))
-
-st |> 
-  ggplot() +
-  geom_sf() +
-  coord_sf(crs = 2256)
+  filter(NAME == str_to_title(str_replace_all("new_hampshire", "_", " ")))
 
 wkt_st <- st_as_text(st[[1,"geometry"]])
 
 data <- st_read("data/kontur/kontur_population_US_20220630.gpkg",
                 wkt_filter = wkt_st)
 
-# data |> 
-#   ggplot() +
-#   geom_sf()
-st_buff <- st |> 
-  st_cast("MULTILINESTRING") |> 
-  st_buffer(1609.34 * .1, endCapStyle = "FLAT", joinStyle = "MITRE") |> 
-  mutate(population = 1) |> 
-  rename(geom = geometry)
+data |> 
+  ggplot() +
+  geom_sf()
 
-# st |> 
-#   ggplot() +
-#   geom_sf() +
-#   coord_sf(crs = 2863)
+st_d <- st_join(data, st, left = FALSE)
 
-st_dd <- st_join(data, st, left = FALSE)
-st_d <- bind_rows(st_dd, st_buff)
-st_d <- st_transform(st_d, crs = 2256)
-
-st_d |>
+st_d |> 
   ggplot() +
   geom_sf()
 
@@ -72,7 +54,7 @@ if (yind > xind) {
   y_rat <- yind / xind
 }
 
-size <- 10000
+size <- 1000
 rast <- st_rasterize(st_d |> 
                        select(population, geom),
                      nx = floor(size * x_rat), ny = floor(size * y_rat))
@@ -82,16 +64,17 @@ mat <- matrix(rast$population, nrow = floor(size * x_rat), ncol = floor(size * y
 
 # set up color palette
 
-pal <- "glacier_arches2"
+pal <- "green_gold"
 
-c1 <- natparks.pals("Olympic")
-c2 <- natparks.pals("Arches")
-
-colors <- c(c1[6:5], "white")
+c1 <- PrettyCols::prettycols("Greens")
+c2 <- PrettyCols::prettycols("Tangerines")
+colors <- scico::scico(n = 10, palette = "bamako")
 swatchplot(colors)
 
-texture <-  grDevices::colorRampPalette(rev(colors), bias = .75)(256)
+texture <- grDevices::colorRampPalette(colors, bias = 4)(256)
+
 swatchplot(texture)
+
 
 ###################
 # Build 3D Object #
@@ -111,7 +94,7 @@ mat |>
           soliddepth = 0,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
-          z = 50/10,
+          z = 75,
           # Set the location of the shadow, i.e. where the floor is.
           # This is on the same scale as your data, so call `zelev` to see the
           # min/max, and set it however far below min as you like.
@@ -130,7 +113,7 @@ mat |>
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 35, zoom = 1, theta = -20)
+render_camera(phi = 35, zoom = .85, theta = 20)
 
 ###############################
 # Create High Quality Graphic #
@@ -175,12 +158,12 @@ saveRDS(list(
     outfile, 
     # See rayrender::render_scene for more info, but best
     # sample method ('sobol') works best with values over 256
-    samples = 450, 
-    preview = FALSE,
+    samples = 300, 
+    preview = TRUE,
     light = TRUE,
-    lightdirection = rev(c(160, 160, 165, 165)),
-    lightcolor = c(c1[3], "white", c2[3], "white"),
-    lightintensity = c(500, 75, 750, 75),
+    lightdirection = rev(c(140, 140, 150, 150)),
+    lightcolor = c(colors[1], "white", colors[10], "white"),
+    lightintensity = c(750, 50, 1000, 50),
     lightaltitude = c(10, 80, 10, 80),
     # All it takes is accidentally interacting with a render that takes
     # hours in total to decide you NEVER want it interactive
@@ -195,10 +178,8 @@ saveRDS(list(
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
     # width = round(6000 * wr), height = round(6000 * hr),
-    width = 10000, height = 10000,
-    ground_material = rayrender::microfacet(roughness = c(.1, .3),
-                          eta=c(10,7,10), 
-                          kappa=c(.5,.5,.5))
+    width = 800, height = 800,
+    ground_material = rayrender::diffuse(color = "transparent")
   )
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"), "\n")
