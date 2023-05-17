@@ -29,6 +29,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Maryland Population Density](R/portraits/maryland)
+
+![Maryland Population Density](tracked_graphics/titled_md_pop_small.png)
+
 ## [Montana Population Density](R/portraits/montana)
 
 ![Montana Population Density](tracked_graphics/titled_mt_pop_small.png)
