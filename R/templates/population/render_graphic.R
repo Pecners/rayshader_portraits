@@ -83,7 +83,7 @@ swatchplot(texture)
 # Keep this line so as you're iterating you don't forget to close the
 # previous window
 
-try(rgl::rgl.close())
+try(rgl::close3d())
 
 # Create the initial 3D object
 mat |> 
