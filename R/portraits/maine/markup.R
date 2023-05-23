@@ -23,7 +23,7 @@ img |>
   image_annotate(text = glue("Graphic: Spencer Schien (@MrPecners) | ",
                              "Kontur Population Data (Released June 30, 2022)"),
                  gravity = "south",
-                 location = "+0+200", font = "Amarante",
+                 location = "+0+300", font = "Amarante",
                  color = alpha(text_color, .5),
                  kerning = 20,
                  size = 60, weight = 700) |> 
