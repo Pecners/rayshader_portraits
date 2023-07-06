@@ -80,7 +80,7 @@ if (yind > xind) {
   y_rat <- yind / xind
 }
 
-size <- 12000
+size <- 14000
 rast <- st_rasterize(st_d |> 
                        select(population, geom),
                      nx = floor(size * x_rat), ny = floor(size * y_rat))
@@ -124,7 +124,7 @@ mat |>
           soliddepth = 0,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
-          z = 50 / 12,
+          z = 50 / 15,
           # Set the location of the shadow, i.e. where the floor is.
           # This is on the same scale as your data, so call `zelev` to see the
           # min/max, and set it however far below min as you like.
@@ -161,7 +161,7 @@ if (!dir.exists(glue("images/{map}"))) {
 # Note that I am not tracking the `images` directory, and this
 # is because these files are big enough to make tracking them on
 # GitHub difficult. 
-outfile <- str_to_lower(glue("images/{map}/{map}_{pal}.png"))
+outfile <- str_to_lower(glue("images/{map}/{map}_{pal}_large.png"))
 
 # Now that everything is assigned, save these objects so we
 # can use then in our markup script
@@ -208,7 +208,7 @@ saveRDS(list(
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
     # width = round(6000 * wr), height = round(6000 * hr),
-    width = 12000, height = 12000,
+    width = size, height = size,
     ground_material = rayrender::microfacet(roughness = c(.1, .4), 
                                             eta = c(1, .75, .1), 
                                             kappa = c(.1, .75, 1))
