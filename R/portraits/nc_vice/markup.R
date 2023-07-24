@@ -53,5 +53,5 @@ system(
 
 
 image_read("images/nc_vice/titled_nc_vice_pop_done.png") |> 
-  image_scale(geometry = "42%x") |> 
+  image_scale(geometry = "41%x") |> 
   image_write("tracked_graphics/titled_nc_vice_pop_small.png")
