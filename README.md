@@ -29,6 +29,18 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [East Coast Population Density](R/portraits/east_coast)
+
+![East Coast Population Density](tracked_graphics/titled_east_coast_pop_small.png)
+
+## [West Coast Population Density](R/portraits/west_coast)
+
+![West Coast Population Density](tracked_graphics/titled_west_coast_pop_small.png)
+
+## [Great Lakes Population Density](R/portraits/great_lakes)
+
+![Great Lakes Population Density](tracked_graphics/titled_great_lakes_pop_small.png)
+
 ## [New York Population Density](R/portraits/ny_again)
 
 ![New York Population Density](tracked_graphics/titled_ny_again_pop_small.png)
