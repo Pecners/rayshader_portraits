@@ -29,6 +29,22 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Rhode Island Population Density](R/portraits/rhode_island)
+
+![Rhode Island Population Density](tracked_graphics/titled_ri_pop_small.png)
+
+## [Connecticut Population Density](R/portraits/connecticut)
+
+![Connecticut Population Density](tracked_graphics/titled_ct_pop_small.png)
+
+## [New Hampshire Population Density](R/portraits/new_hampshire)
+
+![New Hampshire Population Density](tracked_graphics/titled_nh_pop_small.png)
+
+## [Delaware Population Density](R/portraits/delaware)
+
+![Delaware Population Density](tracked_graphics/titled_de_pop_small.png)
+
 ## [East Coast Population Density](R/portraits/east_coast)
 
 ![East Coast Population Density](tracked_graphics/titled_east_coast_pop_small.png)

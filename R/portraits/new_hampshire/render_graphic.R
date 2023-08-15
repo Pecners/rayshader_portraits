@@ -6,7 +6,8 @@ library(glue)
 library(colorspace)
 library(tigris)
 library(stars)
-library(MetBrewer)
+library(NatParksPalettes)
+library(rnaturalearth)
 
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
@@ -28,11 +29,37 @@ wkt_st <- st_as_text(st[[1,"geometry"]])
 data <- st_read("data/kontur/kontur_population_US_20220630.gpkg",
                 wkt_filter = wkt_st)
 
+st_dd <- st_join(data, st, left = FALSE)
+
+
 data |> 
   ggplot() +
   geom_sf()
 
-st_d <- st_join(data, st, left = FALSE)
+# Get state boundaries
+
+address <- "https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m_land.zip"
+destdir <- tempdir()
+utils::download.file(file.path(address), zip_file <- tempfile())
+utils::unzip(zip_file, exdir = destdir)
+land <- st_read(glue("{destdir}/ne_10m_land.shp")) |> 
+  st_transform(crs = st_crs(data))
+
+st_land <- st_intersection(st, land)
+
+st_buff <- st_land |> 
+  st_cast("MULTILINESTRING") |> 
+  st_buffer(1609.34 * .1, endCapStyle = "FLAT", joinStyle = "MITRE") |> 
+  mutate(population = 1) |> 
+  rename(geom = geometry)
+
+# st |> 
+#   ggplot() +
+#   geom_sf() +
+#   coord_sf(crs = 2863)
+
+st_d <- bind_rows(st_buff, st_dd)
+
 
 st_d |> 
   ggplot() +
@@ -54,7 +81,7 @@ if (yind > xind) {
   y_rat <- yind / xind
 }
 
-size <- 1000
+size <- 10000
 rast <- st_rasterize(st_d |> 
                        select(population, geom),
                      nx = floor(size * x_rat), ny = floor(size * y_rat))
@@ -64,17 +91,23 @@ mat <- matrix(rast$population, nrow = floor(size * x_rat), ncol = floor(size * y
 
 # set up color palette
 
-pal <- "green_gold"
+pal <- "golden_brown"
 
-c1 <- PrettyCols::prettycols("Greens")
-c2 <- PrettyCols::prettycols("Tangerines")
-colors <- scico::scico(n = 10, palette = "bamako")
-swatchplot(colors)
+c1 <- natparks.pals("Acadia", n = 10)
+c2 <- natparks.pals("Redwood", n = 10)
 
-texture <- grDevices::colorRampPalette(colors, bias = 4)(256)
+colors <- c(lighten(c2[1], .75),
+            lighten(c2[1], .5),
+            lighten(c2[1], .25), 
+            c2[1], c1[10:6])
+
+swatchplot(colors[c(4:1, 9:5)])
+
+
+
+texture <- grDevices::colorRampPalette(colors, bias = 3)(256)
 
 swatchplot(texture)
-
 
 ###################
 # Build 3D Object #
@@ -83,7 +116,7 @@ swatchplot(texture)
 # Keep this line so as you're iterating you don't forget to close the
 # previous window
 
-try(rgl::rgl.close())
+try(rgl::close3d())
 
 # Create the initial 3D object
 mat |> 
@@ -94,7 +127,7 @@ mat |>
           soliddepth = 0,
           # You might need to hone this in depending on the data resolution;
           # lower values exaggerate the height
-          z = 75,
+          z = 75 / 10,
           # Set the location of the shadow, i.e. where the floor is.
           # This is on the same scale as your data, so call `zelev` to see the
           # min/max, and set it however far below min as you like.
@@ -158,11 +191,11 @@ saveRDS(list(
     outfile, 
     # See rayrender::render_scene for more info, but best
     # sample method ('sobol') works best with values over 256
-    samples = 300, 
-    preview = TRUE,
+    samples = 450, 
+    preview = FALSE,
     light = TRUE,
     lightdirection = rev(c(140, 140, 150, 150)),
-    lightcolor = c(colors[1], "white", colors[10], "white"),
+    lightcolor = c(colors[3], "white", colors[7], "white"),
     lightintensity = c(750, 50, 1000, 50),
     lightaltitude = c(10, 80, 10, 80),
     # All it takes is accidentally interacting with a render that takes
@@ -178,8 +211,7 @@ saveRDS(list(
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
     # width = round(6000 * wr), height = round(6000 * hr),
-    width = 800, height = 800,
-    ground_material = rayrender::diffuse(color = "transparent")
+    width = 10000, height = 10000
   )
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"), "\n")
