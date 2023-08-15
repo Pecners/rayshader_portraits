@@ -80,7 +80,7 @@ system(
 
 
 
-image_read("images/rhode_island/titled_ri_pop_done.png") |> 
+image_read("images/rhode_island/titled_ri_pop_cap.png") |> 
   image_scale(geometry = "48%x") |> 
   image_write("tracked_graphics/titled_ri_pop_small.png")
 

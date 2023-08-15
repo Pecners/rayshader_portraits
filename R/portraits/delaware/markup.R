@@ -76,6 +76,6 @@ system(
 )
 
 
-image_read("images/delaware/titled_de_pop_done.png") |> 
+image_read("images/delaware/titled_de_pop_done_cap.png") |> 
   image_scale(geometry = "43%x") |> 
   image_write("tracked_graphics/titled_de_pop_small.png")

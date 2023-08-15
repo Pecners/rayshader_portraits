@@ -80,7 +80,7 @@ system(
 
 
 
-image_read("images/connecticut/titled_ct_pop_done.png") |> 
+image_read("images/connecticut/titled_ct_pop_cap.png") |> 
   image_scale(geometry = "53%x") |> 
   image_write("tracked_graphics/titled_ct_pop_small.png")
 
