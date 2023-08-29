@@ -29,6 +29,22 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Tennessee Population Density](R/portraits/tennessee)
+
+![Tennessee Population Density](tracked_graphics/titled_tn_pop_small.png)
+
+## [Colorado Population Density](R/portraits/colorado)
+
+![Colorado Population Density](tracked_graphics/titled_co_pop_small.png)
+
+## [South Dakota Population Density](R/portraits/south_dakota)
+
+![South Dakota Population Density](tracked_graphics/titled_sd_pop_small.png)
+
+## [North Dakota Population Density](R/portraits/north_dakota)
+
+![North Dakota Population Density](tracked_graphics/titled_nd_pop_small.png)
+
 ## [Rhode Island Population Density](R/portraits/rhode_island)
 
 ![Rhode Island Population Density](tracked_graphics/titled_ri_pop_small.png)
