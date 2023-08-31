@@ -24,13 +24,13 @@ image_info(img)
 
 img |> 
   # crop the image to desired dimensions
-  image_crop(geometry = "14000X9333+0-250", gravity = "center") |> 
+  image_crop(geometry = "14500X9667+0-250", gravity = "center") |> 
   image_write("images/tennessee/titled_tn_pop.png")
 
 # Use system() to make imagemagick calls manually
 # This code chunk adds the "tennessee" title
 system(
-  glue("convert -size 14000X9333 xc:none -gravity Center ",
+  glue("convert -size 14500X9667 xc:none -gravity Center ",
        
        "-stroke '{text_color}' -fill '{text_color}' ",
        "-pointsize 750 -kerning 100 -font Poller-One ",
@@ -43,7 +43,7 @@ system(
 )
 
 system(
-  glue("convert -size 14000X9333 xc:none -gravity Center ",
+  glue("convert -size 14500X9667 xc:none -gravity Center ",
        
        
        "-stroke '{colors[3]}' -fill '{colors[3]}' ",
@@ -63,7 +63,7 @@ cap <- glue("Graphic: Spencer Schien (@MrPecners) | ",
             "Kontur Population Data (Released June 30, 2022)")
 
 system(
-  glue("convert -size 14000X9333 xc:none -gravity Center ",
+  glue("convert -size 14500X9667 xc:none -gravity Center ",
        
        "-stroke '{alpha(colors[3], .5)}' -fill '{alpha(colors[3], .5)}' ",
        "-pointsize 115 -kerning 20 -font Amarante-Regular ",

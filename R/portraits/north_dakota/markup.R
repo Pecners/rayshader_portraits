@@ -24,7 +24,7 @@ image_info(img)
 
 img |> 
   # crop the image to desired dimensions
-  image_crop(geometry = "9750x6500+0-250", gravity = "center") |> 
+  image_crop(geometry = "10000x6666+0-250", gravity = "center") |> 
   image_write("images/north_dakota/titled_nd_pop.png")
 
 # Use system() to make imagemagick calls manually
