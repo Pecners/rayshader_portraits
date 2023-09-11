@@ -123,7 +123,7 @@ mat |>
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 45, zoom = .75, theta = 20)
+render_camera(phi = 45, zoom = 1, theta = 20)
 
 ###############################
 # Create High Quality Graphic #
