@@ -1,50 +1,52 @@
-NAME,DONE
-Alabama,TRUE
-Arizona,TRUE
+NAME,STORE
+Alabama,
+Alaska,TRUE
+Arizona,
 Arkansas,
-California,TRUE
-Colorado,
-Connecticut,
-Delaware,
-District of Columbia,
+California,
+Colorado,TRUE
+Connecticut,TRUE
+Delaware,TRUE
 Florida,TRUE
-Georgia,TRUE
-Idaho,TRUE
+Georgia,
+Hawaii,TRUE
+Idaho,
 Illinois,TRUE
-Indiana,TRUE
-Iowa,TRUE
+Indiana,
+Iowa,
 Kansas,TRUE
-Kentucky,TRUE
-Louisiana,TRUE
+Kentucky,
+Louisiana,
 Maine,TRUE
 Maryland,TRUE
 Massachusetts,TRUE
-Michigan,TRUE
-Minnesota,TRUE
-Mississippi,TRUE
-Missouri,TRUE
-Montana,TRUE
-Nebraska,TRUE
-Nevada,TRUE
+Michigan,
+Minnesota,
+Mississippi,
+Missouri,
+Montana,
+Nebraska,
+Nevada,
 New Hampshire,
-New Jersey,TRUE
+New Jersey,
 New Mexico,
-New York,TRUE
+New York,
 North Carolina,TRUE
-North Dakota,
-Ohio,TRUE
-Oklahoma,TRUE
-Oregon,TRUE
-Pennsylvania,TRUE
-Rhode Island,
-South Carolina,TRUE
+North Dakota,TRUE
+Ohio,
+Oklahoma,
+Oregon,
+Pennsylvania,
+Rhode Island,TRUE
+South Carolina,
 South Dakota,
-Tennessee,
+Tennessee,TRUE
 Texas,TRUE
-Utah,TRUE
+Utah,
 Vermont,TRUE
-Virginia,TRUE
-Washington,TRUE
+Virginia,
+Washington,
 West Virginia,TRUE
-Wisconsin,TRUE
-Wyoming,TRUE
+Wisconsin,
+Wyoming,
+New England,TRUE
