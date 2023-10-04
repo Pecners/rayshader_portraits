@@ -4,6 +4,8 @@ This repo houses code I use to create shaded relief graphics using the [`rayshad
 
 I've been making these graphics for a while (see my [gallery](https://spencerschien.info/gallery/shaded-relief/)) and wanted to share code from the start, but I was self-conscious about the state of my code. This repo is an effort to better organize my code so I can be confident in sharing it.
 
+I also have an online store where I sell prints of a selection of these map. Find that store here: [https://www.rayshadedesigns.com/](https://www.rayshadedesigns.com/).
+
 ## Repo Structure
 
 Code to create each graphic has its own directory within the [R/portraits](R/portraits) directory, and helper functions can be found in the [R/utils](R/utils) directory. 
