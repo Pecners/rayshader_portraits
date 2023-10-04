@@ -29,6 +29,18 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Gold Coast Population Density](R/portraits/south_florida)
+
+![Gold Coast Population Density](tracked_graphics/titled_gold_coast_small.png)
+
+## [Georgia Pastel Population Density](R/portraits/georgia_pastel)
+
+![Georgia Pastel Population Density](tracked_graphics/titled_ga_pastel_pop_small.png)
+
+## [Georgia Population Density](R/portraits/georgia_again)
+
+![Georgia Population Density](tracked_graphics/titled_ga_again_pop_small.png)
+
 ## [New Mexico Population Density](R/portraits/new_mexico)
 
 ![New Mexico Population Density](tracked_graphics/titled_nm_pop_small.png)
