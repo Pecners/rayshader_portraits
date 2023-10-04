@@ -140,5 +140,5 @@ system(
 )
 
 image_read("images/georgia_country/titled_geo_pop.png") |> 
-  image_scale(geometry = "46%x") |> 
+  image_scale(geometry = "50%x") |> 
   image_write("tracked_graphics/titled_geo_pop_small.png")

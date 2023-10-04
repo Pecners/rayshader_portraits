@@ -31,6 +31,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Georgia (Country) Population Density](R/portraits/georgia_country)
+
+![Georgia (Country) Population Density](tracked_graphics/titled_geo_pop_small.png)
+
 ## [Gold Coast Population Density](R/portraits/south_florida)
 
 ![Gold Coast Population Density](tracked_graphics/titled_gold_coast_small.png)
