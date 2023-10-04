@@ -39,7 +39,7 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 ## [Georgia Population Density](R/portraits/georgia_again)
 
-![Georgia Population Density](tracked_graphics/titled_ga_again_pop_small.png)
+![Georgia Population Density](tracked_graphics/titled_ga_pop_small.png)
 
 ## [New Mexico Population Density](R/portraits/new_mexico)
 
