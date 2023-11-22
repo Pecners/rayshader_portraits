@@ -31,6 +31,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Joshua Tree National Park](R/portraits/joshua_tree)
+
+![Joshua Tree National Park](tracked_graphics/titled_jt_small.png)
+
 ## [Georgia (Country) Population Density](R/portraits/georgia_country)
 
 ![Georgia (Country) Population Density](tracked_graphics/titled_geo_pop_small.png)
