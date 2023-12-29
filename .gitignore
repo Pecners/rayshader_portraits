@@ -18,3 +18,4 @@ temp_files*
 R/portraits/logo/*
 images/ak_shift*
 output.mp4
+*.ai
