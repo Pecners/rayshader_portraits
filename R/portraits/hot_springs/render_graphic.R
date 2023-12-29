@@ -15,12 +15,12 @@ library(scico)
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
 
-map <- "redwood"
+map <- "hot_springs"
 
 # NPS boundaries source: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True
 
 data <- st_read("data/nps_boundary/nps_boundary.shp") |>
-  filter(str_detect(PARKNAME, str_to_title(str_replace(map, "_", " "))))|> 
+  filter(str_detect(PARKNAME, str_to_title(str_replace(map, "_", " ")))) |> 
   st_transform(crs = 3310)
 
 d_cent <- st_centroid(data) |> 
@@ -43,7 +43,6 @@ data |>
   ggplot() +
   geom_sf()
 
-################
 # Download DEM #
 ################
 
@@ -51,10 +50,9 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 13
+z <- 14
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
-mat[mat < 1] <- NA
 
 # When initially building your object to render, you'll want to work with
 # slimmed down data so you can iterate faster. I prefer to just start with
@@ -65,6 +63,19 @@ mat[mat < 1] <- NA
 
 # Set up color palette. The `pal` argument will be used in file names,
 # so it's important. `colors` will also be passed along. 
+
+
+pal <- "pats"
+c2 <- mixcolor(alpha = seq(from = 0, to = .75, by = .25), color1 =  hex2RGB("#a50021"),
+               color2 = hex2RGB("#ffffff")) |>
+  hex() |> 
+  rev()
+colors <- c(c2)
+swatchplot(colors)
+texture <- grDevices::colorRampPalette(colors, .25)(256)
+swatchplot(texture)
+
+lc <- colors[1]
 
 
 pal <- "golden_brown"
@@ -116,7 +127,7 @@ try(rgl::rgl.close())
 
 mat %>%
   # This adds the coloring, we're passing in our `colors` object
-  height_shade(texture = texture) %>%
+  height_shade(texture = grDevices::colorRampPalette(texture)(256)) %>%
   plot_3d(heightmap = mat, 
           # This is my preference, I don't love the `solid` in most cases
           solid = FALSE,
@@ -141,7 +152,7 @@ mat %>%
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 90, zoom = 1.1, theta = 0)
+render_camera(phi = 80, zoom = 1, theta = 0)
 
 ###############################
 # Create High Quality Graphic #
@@ -188,28 +199,36 @@ saveRDS(list(
     # See rayrender::render_scene for more info, but best
     # sample method ('sobol') works best with values over 256
     samples = 450, 
-    # Turn light off because we're using environment_light
+    preview = FALSE,
     light = TRUE,
-    lightdirection = rev(c(265, 265, 275, 275)),
-    lightcolor = c(colors[3], lc, lighten(colors[7], .25), lc),
+    lightdirection = rev(c(120, 120, 130, 130)),
+    lightcolor = c(colors[1], "white", "#c1f2fe", "white"),
+    # lightintensity = c(750, 50, 1000, 50),
+    lightaltitude = c(15, 80, 15, 80),
+    
+    # lightdirection = rev(c(265, 265, 275, 275)),
+    # lightcolor = c(colors[3], lc, lighten(colors[7], .25), lc),
     lightintensity = c(500, 75, 750, 75),
-    lightaltitude = c(10, 80, 10, 80),
+    # lightaltitude = c(10, 80, 10, 80),
     # All it takes is accidentally interacting with a render that takes
     # hours in total to decide you NEVER want it interactive
     interactive = FALSE,
-    preview = FALSE,
     # HDR lighting used to light the scene
-    environment_light = "assets/env/phalzer_forest_01_4k.hdr",
-    # environment_light = "assets/env/small_rural_road_4k.hdr",
-    # Adjust this value to brighten or darken lighting
-    intensity_env = .5,
-    # Rotate the light -- positive values move it counter-clockwise
-    rotate_env = -20,
+    # environment_light = "assets/env/phalzer_forest_01_4k.hdr",
+    # # environment_light = "assets/env/small_rural_road_4k.hdr",
+    # # Adjust this value to brighten or darken lighting
+    # intensity_env = 1.5,
+    # # Rotate the light -- positive values move it counter-clockwise
+    # rotate_env = 130,
     # This effectively sets the resolution of the final graphic,
     # because you increase the number of pixels here.
     # width = round(6000 * wr), height = round(6000 * hr),
-    width = 6000, height = 6000,
-    ground_material = rayrender::diffuse(color = colors[3], noisecolor = colors[1])
+    width = 8000, height = 8000,
+    ground_material = rayrender::microfacet(roughness = .4,
+                                            eta = c(1, .75, .1),
+                                            kappa = c(.1, .75, 1))
+    # ground_material = rayrender::diffuse(color = colors[3], noisecolor = colors[1])
+    
   )
   end_time <- Sys.time()
   cat(glue("Total time: {end_time - start_time}"))

@@ -1,5 +1,5 @@
 # inset map -- need to comment this code...
-header <- readRDS("R/portraits/channel_islands/header.rds")
+header <- readRDS("R/portraits/death_again/header.rds")
 
 world <- rnaturalearth::ne_countries(scale = "small", returnclass = "sf")
 
@@ -45,7 +45,6 @@ text_color <- colors[1]
 loc_plot <- ggplot(data = w) +
   geom_sf(data = water, color = NA, fill = alpha("white", .75)) +
   geom_sf(fill = "red", size = .1, color = "white") +
-  geom_sf(data = spot) +
   coord_sf(crs = prj) +
   theme_void() 
 

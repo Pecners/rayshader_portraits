@@ -9,7 +9,7 @@ header <- readRDS("R/portraits/joshua_tree/header.rds")
 colors <- header$colors
 swatchplot(colors)
 
-text_color <- colors[8]
+text_color <- colors[4]
 
 img <- image_read(header$outfile)
 image_info(img)
@@ -38,7 +38,7 @@ system(
   glue("convert -size 4000x2000 xc:none -gravity Center ",
        
        
-       "-stroke '{colors[7]}' -fill '{colors[7]}' ",
+       "-stroke '{colors[8]}' -fill '{colors[8]}' ",
        "-pointsize 200 -kerning 75 -font El-Messiri-Regular ",
        "-annotate +0+0 'NATIONAL PARK' ",
        "-rotate 180 -distort Arc '60 180' -background none +repage ",

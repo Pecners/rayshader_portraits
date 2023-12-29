@@ -15,13 +15,13 @@ library(scico)
 # Set map name that will be used in file names, and 
 # to get get boundaries from master NPS list
 
-map <- "redwood"
+map <- "yosemite_again"
 
 # NPS boundaries source: https://irma.nps.gov/DataStore/Reference/Profile/2224545?lnv=True
 
 data <- st_read("data/nps_boundary/nps_boundary.shp") |>
-  filter(str_detect(PARKNAME, str_to_title(str_replace(map, "_", " "))))|> 
-  st_transform(crs = 3310)
+  filter(str_detect(PARKNAME, str_to_title(str_replace("yosemite", "_", " "))))|> 
+  st_transform(crs = 3566)
 
 d_cent <- st_centroid(data) |> 
   st_transform(crs = 4326)
@@ -51,10 +51,9 @@ data |>
 # results in greater resolution. Higher resolution takes more compute, though -- 
 # I can't always max `z` up to 14 on my machine. 
 
-z <- 13
+z <- 12
 zelev <- get_elev_raster(data, z = z, clip = "location")
 mat <- raster_to_matrix(zelev)
-mat[mat < 1] <- NA
 
 # When initially building your object to render, you'll want to work with
 # slimmed down data so you can iterate faster. I prefer to just start with
@@ -141,7 +140,7 @@ mat %>%
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 90, zoom = 1.1, theta = 0)
+render_camera(phi = 90, zoom = 1, theta = 0)
 
 ###############################
 # Create High Quality Graphic #
@@ -190,6 +189,7 @@ saveRDS(list(
     samples = 450, 
     # Turn light off because we're using environment_light
     light = TRUE,
+    # lightdirection = rev(c(95, 95, 85, 85)),
     lightdirection = rev(c(265, 265, 275, 275)),
     lightcolor = c(colors[3], lc, lighten(colors[7], .25), lc),
     lightintensity = c(500, 75, 750, 75),

@@ -104,7 +104,7 @@ hr <- h / max(c(w,h))
 ###################
 
 # setting shadow to 500 feet below minimum value in DEM
-shadow_depth <- -10000
+shadow_depth <- min(mat, na.rm = TRUE)
 
 # setting resolution to about 5x for height
 res <- mean(round(terra::res(zelev))) / 5

@@ -102,7 +102,7 @@ hr <- h / max(c(w,h))
 ###################
 
 # setting shadow to 500 feet below minimum value in DEM
-shadow_depth <- min(mat, na.rm = TRUE) - 10000
+shadow_depth <- min(mat, na.rm = TRUE)
 
 # setting resolution to about 5x for height
 res <- mean(round(terra::res(zelev))) / 5
@@ -141,7 +141,7 @@ mat %>%
           background = "white") 
 
 # Use this to adjust the view after building the window object
-render_camera(phi = 90, zoom = .5, theta = 0)
+render_camera(phi = 90, zoom = 1, theta = 0)
 
 ###############################
 # Create High Quality Graphic #

@@ -4,7 +4,7 @@ library(glue)
 library(colorspace)
 
 # Load `header` list with needed data
-header <- readRDS("R/portraits/sequoia_again/header.rds")
+header <- readRDS("R/portraits/joshua_tree/header.rds")
 colors <- header$colors
 swatchplot(colors)
 
@@ -21,7 +21,7 @@ image_info(img)
 
 img |> 
   image_crop(geometry = "6000x5500+0-500", gravity = "CENTER") |> 
-  image_annotate(text = "SEQUOIA", 
+  image_annotate(text = "JOSHUA TREE", 
                  gravity = "north",
                  location = "+0+300", font = "Poller One",
                  color = text_color, kerning = 100,
@@ -33,22 +33,22 @@ img |>
   #                size = 400, weight = 700) |> 
   image_annotate(text = "NATIONAL PARK",
                  gravity = "north",
-                 location = "+0+850", font = "Amarante",
+                 location = "+0+950", font = "Amarante",
                  color = colors[8], kerning = 75,
                  weight = 700,
-                 size = 300) |>
+                 size = 400) |>
   image_annotate(text = glue("Graphic by Spencer Schien (@MrPecners) | ",
                              "Data from the National Park Service"),
                  gravity = "north",
-                 location = "+0+1175", font = "Amarante",
+                 location = "+0+1375", font = "Amarante",
                  color = colors[8],
-                 kerning = 14,
-                 size = 55) |>
+                 kerning = 18,
+                 size = 65) |>
   # image_composite(image_scale(inset, geometry = "75%x"),
   #                 gravity = "southwest",
   #                 offset = "+500+750") |> 
-  image_write("images/sequoia_again/titled_sequoia.png")
+  image_write("images/joshua_tree/titled_jt.png")
 
-image_read("images/sequoia_again/titled_sequoia.png") |> 
+image_read("images/joshua_tree/titled_jt.png") |> 
   image_scale(geometry = "61%x") |> 
-  image_write("tracked_graphics/titled_sequoia_small.png")
+  image_write("tracked_graphics/titled_jt_small.png")
