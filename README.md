@@ -31,6 +31,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Rocky Mountain National Park](R/portraits/rocky_mountain)
+
+![Rocky Mountain National Park](tracked_graphics/rocky_mountain_acadia_small.png)
+
 ## [Acadia National Park](R/portraits/acadia)
 
 ![Joshua Tree National Park](tracked_graphics/titled_acadia_small.png)
