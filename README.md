@@ -31,6 +31,10 @@ Here's a sample workflow you could use to repurpose this code for your own geogr
 
 # Graphics
 
+## [Haleakala National Park](R/portraits/haleakala)
+
+![Haleakala National Park](tracked_graphics/haleakala_titled_small.png)
+
 ## [Mesa Verde National Park](R/portraits/mesa_verde)
 
 ![Mesa Verde National Park](tracked_graphics/mesa_verde_titled_small.png)
