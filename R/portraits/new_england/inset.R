@@ -1,3 +1,5 @@
+library(rnaturalearth) #you use ne_download below but never load the library in this example.
+
 s <- states()
 
 # filter for only contiguous states
